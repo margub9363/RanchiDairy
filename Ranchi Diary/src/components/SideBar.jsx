@@ -21,7 +21,7 @@ const SideBar = () => {
               <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#home"></use>
               </svg>
-              Home
+              Profile
             </a>
           </li>
           <li>
@@ -37,7 +37,7 @@ const SideBar = () => {
               <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#table"></use>
               </svg>
-              Orders
+              Subscription
             </a>
           </li>
           <li>
@@ -45,7 +45,7 @@ const SideBar = () => {
               <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#grid"></use>
               </svg>
-              Products
+              Payments
             </a>
           </li>
           <li>
@@ -54,6 +54,46 @@ const SideBar = () => {
                 <use xlinkHref="#people-circle"></use>
               </svg>
               Customers
+            </a>
+          </li>
+          <li>
+            <a href="#" className="nav-link text-white">
+              <svg className="bi pe-none me-2" width="16" height="16">
+                <use xlinkHref="#people-circle"></use>
+              </svg>
+              Send Notifications
+            </a>
+          </li>
+          <li>
+            <a href="#" className="nav-link text-white">
+              <svg className="bi pe-none me-2" width="16" height="16">
+                <use xlinkHref="#people-circle"></use>
+              </svg>
+              Doctors
+            </a>
+          </li>
+          <li>
+            <a href="#" className="nav-link text-white">
+              <svg className="bi pe-none me-2" width="16" height="16">
+                <use xlinkHref="#people-circle"></use>
+              </svg>
+              Food Deliviries
+            </a>
+          </li>
+          <li>
+            <a href="#" className="nav-link text-white">
+              <svg className="bi pe-none me-2" width="16" height="16">
+                <use xlinkHref="#people-circle"></use>
+              </svg>
+              Tractor
+            </a>
+          </li>
+          <li>
+            <a href="#" className="nav-link text-white">
+              <svg className="bi pe-none me-2" width="16" height="16">
+                <use xlinkHref="#people-circle"></use>
+              </svg>
+              Logout
             </a>
           </li>
         </ul>
@@ -72,7 +112,7 @@ const SideBar = () => {
               height="32"
               className="rounded-circle me-2"
             />
-            <strong>mdo</strong>
+            <strong>Rahman</strong>
           </a>
           <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
             <li>
