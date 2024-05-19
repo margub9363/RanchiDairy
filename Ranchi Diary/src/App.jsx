@@ -1,18 +1,19 @@
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HomePage from "./components/HomePage";
+import SideBar from "./components/SideBar";
 
 function App() {
   return (
     <>
-      <div>
-        <Header />
-      </div>
-      <div>
-        <HomePage />
-      </div>
-      <div>
-        <Footer />
+      <div className="app-container">
+        <SideBar />
+        <div className="content">
+          <Header />
+          <Footer />
+        </div>
       </div>
     </>
   );
