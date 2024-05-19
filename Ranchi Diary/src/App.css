@@ -1,5 +1,6 @@
 .app-container {
   display: flex;
+  height: 730px;
 }
 
 .content {
@@ -7,7 +8,7 @@
 }
 
 .sidebar {
-  min-height: 800px;
+  min-height: 1600px;
 }
 
 .post-card {
@@ -26,4 +27,8 @@
   width: 80%;
   margin-left: 10%;
   margin-top: 50px;
+}
+
+.homepage {
+  height: 65%;
 }

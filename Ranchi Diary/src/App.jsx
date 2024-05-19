@@ -12,6 +12,9 @@ function App() {
         <SideBar />
         <div className="content">
           <Header />
+          <div className="homepage">
+            <HomePage />
+          </div>
           <Footer />
         </div>
       </div>
