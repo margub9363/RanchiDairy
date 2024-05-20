@@ -7,6 +7,12 @@ import SideBar from "./components/SideBar";
 import Profile from "./components/Profile";
 import Dashboard from "./components/Dashboard";
 import Subscription from "./components/Subscription";
+import Payment from "./components/Payment";
+import Customers from "./Customers";
+import SendNotification from "./components/SendNotification";
+import Doctors from "./components/Doctors";
+import FoodDeliviries from "./components/FoodDeliviries";
+import Tractor from "./components/Tractor";
 
 function App() {
   return (
@@ -17,7 +23,7 @@ function App() {
           <Header />
           <div className="homepage">
             {/* <Dashboard /> */}
-            <Subscription />
+            <Tractor />
           </div>
           {/* <Footer /> */}
         </div>
