@@ -23,37 +23,18 @@ function App() {
         <div className="content">
           <Header />
           <div className="homepage">
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/doctor" element={<Doctors />} />
-                <Route path="/foodDeliviries" element={<FoodDeliviries />} />
-                <Route path="/payment" element={<Payment />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route
-                  path="/sendNotification"
-                  element={<SendNotification />}
-                />
-                <Route path="/subscription" element={<Subscription />} />
-                <Route path="/tractor" element={<Tractor />} />
-              </Routes>
-            </BrowserRouter>
+            <Routes>
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/doctor" element={<Doctors />} />
+              <Route path="/foodDeliviries" element={<FoodDeliviries />} />
+            </Routes>
           </div>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </div>
     </>
   );
-  // return (
-  //   <>
-  //     <BrowserRouter>
-  //       <Routes>
-  //         <Route path="/" element={<HomePage />} />
-  //       </Routes>
-  //     </BrowserRouter>
-  //   </>
-  // );
 }
 
 export default App;
