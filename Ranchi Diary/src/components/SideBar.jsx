@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const SideBar = () => {
   return (
     <>
@@ -18,15 +18,19 @@ const SideBar = () => {
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item">
-            <Link to="profile" className="nav-link active" aria-current="page">
+            <NavLink
+              to="profile"
+              className="nav-link text-white"
+              aria-current="page"
+            >
               <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#home"></use>
               </svg>
               Profile
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               to="dashboard"
               className="nav-link text-white"
               aria-current="page"
@@ -35,63 +39,91 @@ const SideBar = () => {
                 <use xlinkHref="#home"></use>
               </svg>
               Dashboard
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="nav-link text-white">
+            <NavLink
+              to="subscription"
+              className="nav-link text-white"
+              aria-current="page"
+            >
               <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#table"></use>
+                <use xlinkHref="#home"></use>
               </svg>
               Subscription
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="nav-link text-white">
+            <NavLink
+              to="payment"
+              className="nav-link text-white"
+              aria-current="page"
+            >
               <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#grid"></use>
+                <use xlinkHref="#home"></use>
               </svg>
-              Payments
-            </a>
-          </li>
+              Payment
+            </NavLink>
+          </li>{" "}
           <li>
-            <a href="#" className="nav-link text-white">
+            <NavLink
+              to="customers"
+              className="nav-link text-white"
+              aria-current="page"
+            >
               <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#people-circle"></use>
+                <use xlinkHref="#home"></use>
               </svg>
               Customers
-            </a>
-          </li>
+            </NavLink>
+          </li>{" "}
           <li>
-            <a href="#" className="nav-link text-white">
+            <NavLink
+              to="sendNotification"
+              className="nav-link text-white"
+              aria-current="page"
+            >
               <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#people-circle"></use>
+                <use xlinkHref="#home"></use>
               </svg>
               Send Notifications
-            </a>
-          </li>
+            </NavLink>
+          </li>{" "}
           <li>
-            <a href="#" className="nav-link text-white">
+            <NavLink
+              to="doctor"
+              className="nav-link text-white"
+              aria-current="page"
+            >
               <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#people-circle"></use>
+                <use xlinkHref="#home"></use>
               </svg>
-              Doctors
-            </a>
-          </li>
+              Doctor
+            </NavLink>
+          </li>{" "}
           <li>
-            <a href="#" className="nav-link text-white">
+            <NavLink
+              to="animalFood"
+              className="nav-link text-white"
+              aria-current="page"
+            >
               <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#people-circle"></use>
+                <use xlinkHref="#home"></use>
               </svg>
-              Food Deliviries
-            </a>
+              Animal Food
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="nav-link text-white">
+            <NavLink
+              to="tractor"
+              className="nav-link text-white"
+              aria-current="page"
+            >
               <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#people-circle"></use>
+                <use xlinkHref="#home"></use>
               </svg>
               Tractor
-            </a>
+            </NavLink>
           </li>
           <li>
             <a href="#" className="nav-link text-white">
