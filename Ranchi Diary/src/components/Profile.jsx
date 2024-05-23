@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
-// import ProfileCss from "../css/Profile.css";
+import "../css/Customer.css";
 
 const Profile = () => {
   return (
@@ -42,8 +42,13 @@ const Profile = () => {
               />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-              <Form.Label>Username</Form.Label>
+            <Form.Group
+              as={Col}
+              md="4"
+              controlId="validationCustomUsername"
+              className="test"
+            >
+              <Form.Label>User Id</Form.Label>
               <InputGroup hasValidation>
                 <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                 <Form.Control
