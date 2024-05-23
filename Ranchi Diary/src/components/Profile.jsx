@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
+// import ProfileCss from "../css/Profile.css";
 
 const Profile = () => {
   return (
@@ -20,9 +21,9 @@ const Profile = () => {
           noValidate
           // validated={validated} onSubmit={handleSubmit}
         >
-          <Row className="mb-3">
+          <Row className="mb-3 no-change">
             <Form.Group as={Col} md="4" controlId="validationCustom01">
-              <Form.Label>First name</Form.Label>
+              <Form.Label className="no-change">First name</Form.Label>
               <Form.Control
                 required
                 type="text"

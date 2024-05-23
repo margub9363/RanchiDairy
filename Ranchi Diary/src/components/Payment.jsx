@@ -62,10 +62,10 @@ const Payment = () => {
         </div>
         <div className="col-md-7 col-lg-8">
           <h4 className="mb-3">Billing address</h4>
-          <form className="needs-validation" novalidate="">
+          <form className="needs-validation" noValidate="">
             <div className="row g-3">
               <div className="col-sm-6">
-                <label for="firstName" className="form-label">
+                <label htmlFor="firstName" className="form-label">
                   First name
                 </label>
                 <input
@@ -83,7 +83,7 @@ const Payment = () => {
               </div>
 
               <div className="col-sm-6">
-                <label for="lastName" className="form-label">
+                <label htmlFor="lastName" className="form-label">
                   Last name
                 </label>
                 <input
@@ -101,7 +101,7 @@ const Payment = () => {
               </div>
 
               <div className="col-12">
-                <label for="username" className="form-label">
+                <label htmlFor="username" className="form-label">
                   Username
                 </label>
                 <div className="input-group has-validation">
@@ -121,7 +121,7 @@ const Payment = () => {
               </div>
 
               <div className="col-12">
-                <label for="email" className="form-label">
+                <label htmlFor="email" className="form-label">
                   Email <span className="text-body-secondary">(Optional)</span>
                 </label>
                 <input
@@ -137,7 +137,7 @@ const Payment = () => {
               </div>
 
               <div className="col-12">
-                <label for="address" className="form-label">
+                <label htmlFor="address" className="form-label">
                   Address
                 </label>
                 <input
@@ -154,7 +154,7 @@ const Payment = () => {
               </div>
 
               <div className="col-12">
-                <label for="address2" className="form-label">
+                <label htmlFor="address2" className="form-label">
                   Address 2{" "}
                   <span className="text-body-secondary">(Optional)</span>
                 </label>
@@ -168,7 +168,7 @@ const Payment = () => {
               </div>
 
               <div className="col-md-5">
-                <label for="country" className="form-label">
+                <label htmlFor="country" className="form-label">
                   Country
                 </label>
                 <select
@@ -186,7 +186,7 @@ const Payment = () => {
               </div>
 
               <div className="col-md-4">
-                <label for="state" className="form-label">
+                <label htmlFor="state" className="form-label">
                   State
                 </label>
                 <select
@@ -204,7 +204,7 @@ const Payment = () => {
               </div>
 
               <div className="col-md-3">
-                <label for="zip" className="form-label">
+                <label htmlFor="zip" className="form-label">
                   Zip
                 </label>
                 <input
@@ -227,7 +227,7 @@ const Payment = () => {
                 className="form-check-input"
                 id="same-address"
               />
-              <label className="form-check-label" for="same-address">
+              <label className="form-check-label" htmlFor="same-address">
                 Shipping address is the same as my billing address
               </label>
             </div>
@@ -238,7 +238,7 @@ const Payment = () => {
                 className="form-check-input"
                 id="save-info"
               />
-              <label className="form-check-label" for="save-info">
+              <label className="form-check-label" htmlFor="save-info">
                 Save this information for next time
               </label>
             </div>
@@ -257,7 +257,7 @@ const Payment = () => {
                   checked=""
                   required=""
                 />
-                <label className="form-check-label" for="credit">
+                <label className="form-check-label" htmlFor="credit">
                   Credit card
                 </label>
               </div>
@@ -269,7 +269,7 @@ const Payment = () => {
                   className="form-check-input"
                   required=""
                 />
-                <label className="form-check-label" for="debit">
+                <label className="form-check-label" htmlFor="debit">
                   Debit card
                 </label>
               </div>
@@ -281,7 +281,7 @@ const Payment = () => {
                   className="form-check-input"
                   required=""
                 />
-                <label className="form-check-label" for="paypal">
+                <label className="form-check-label" htmlFor="paypal">
                   PayPal
                 </label>
               </div>
@@ -289,7 +289,7 @@ const Payment = () => {
 
             <div className="row gy-3">
               <div className="col-md-6">
-                <label for="cc-name" className="form-label">
+                <label htmlFor="cc-name" className="form-label">
                   Name on card
                 </label>
                 <input
@@ -307,7 +307,7 @@ const Payment = () => {
               </div>
 
               <div className="col-md-6">
-                <label for="cc-number" className="form-label">
+                <label htmlFor="cc-number" className="form-label">
                   Credit card number
                 </label>
                 <input
@@ -324,7 +324,7 @@ const Payment = () => {
               </div>
 
               <div className="col-md-3">
-                <label for="cc-expiration" className="form-label">
+                <label htmlFor="cc-expiration" className="form-label">
                   Expiration
                 </label>
                 <input
@@ -339,7 +339,7 @@ const Payment = () => {
               </div>
 
               <div className="col-md-3">
-                <label for="cc-cvv" className="form-label">
+                <label htmlFor="cc-cvv" className="form-label">
                   CVV
                 </label>
                 <input

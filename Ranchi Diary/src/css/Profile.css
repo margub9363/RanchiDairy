@@ -1,0 +1,6 @@
+.no-change {
+  pointer-events: none; /* Prevents clicking and selecting */
+  background-color: #f0f0f0; /* Gray background to indicate disabled state */
+  color: #a0a0a0; /* Gray text to indicate disabled state */
+  border: 1px solid #ccc; /* Disabled border style */
+}

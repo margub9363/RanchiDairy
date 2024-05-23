@@ -53,7 +53,7 @@ const SideBar = () => {
               Subscription
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
               to="payment"
               className="nav-link text-white"
@@ -64,7 +64,7 @@ const SideBar = () => {
               </svg>
               Payment
             </NavLink>
-          </li>{" "}
+          </li>{" "} */}
           <li>
             <NavLink
               to="customers"
@@ -122,7 +122,7 @@ const SideBar = () => {
               <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#home"></use>
               </svg>
-              Tractor
+              Waste Management
             </NavLink>
           </li>
           <li>

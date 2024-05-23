@@ -1,16 +1,46 @@
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+
 const Customers = () => {
   return (
     <>
-      Here will be displaying the List of Our Customers. Right Now its hardcoded
-      but I will make it dynamic, Fetching Values from DB
+      <h1>Customer Data</h1>
       <div>
-        <table class="table table-striped">
+        <InputGroup size="sm" className="mb-3">
+          <InputGroup.Text id="inputGroup-sizing-sm">User Id</InputGroup.Text>
+          <Form.Control
+            aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm"
+          />
+        </InputGroup>
+        <InputGroup size="sm" className="mb-3">
+          <InputGroup.Text id="inputGroup-sizing-sm">Name</InputGroup.Text>
+          <Form.Control
+            aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm"
+          />
+        </InputGroup>
+        <InputGroup size="sm" className="mb-3">
+          <InputGroup.Text id="inputGroup-sizing-sm">
+            Payment Due More Than
+          </InputGroup.Text>
+          <Form.Control
+            aria-label="Small"
+            aria-describedby="inputGroup-sizing-sm"
+          />
+        </InputGroup>
+        <button type="button" className="btn btn-primary btn-sm">
+          Search
+        </button>
+      </div>
+      <div>
+        <table className="table table-striped">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
+              <th scope="col">User Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Payment Due</th>
+              <th scope="col">Contact No</th>
             </tr>
           </thead>
           <tbody>
@@ -28,7 +58,7 @@ const Customers = () => {
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
+              <td colSpan="2">Larry the Bird</td>
               <td>@twitter</td>
             </tr>
           </tbody>
