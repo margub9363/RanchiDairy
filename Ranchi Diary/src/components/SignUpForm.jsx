@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
+import { Link } from "react-router-dom";
 
 function SignUpForm() {
   const [validated, setValidated] = useState(false);
@@ -63,7 +64,9 @@ function SignUpForm() {
         </Form.Group>
         <Button type="submit">Submit form</Button>
       </Form>
-      <Button variant="danger">Cancel SignUp</Button>{" "}
+      <Link to="/home">
+        <Button variant="danger">Cancel SignUp</Button>{" "}
+      </Link>
     </>
   );
 }

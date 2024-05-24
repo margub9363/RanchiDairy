@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import SignUpForm from "./SignUpForm";
+
 const Header = () => {
   return (
     <>
@@ -65,12 +68,16 @@ const Header = () => {
             </form>
 
             <div className="text-end">
-              <button type="button" className="btn btn-outline-light me-2">
-                Login
-              </button>
-              <button type="button" className="btn btn-warning">
-                Sign-up
-              </button>
+              <Link to={"/login"}>
+                <button type="button" className="btn btn-outline-light me-2">
+                  Login
+                </button>
+              </Link>
+              <Link to="/signUp">
+                <button type="button" className="btn btn-warning">
+                  Sign-up
+                </button>
+              </Link>
             </div>
           </div>
         </div>

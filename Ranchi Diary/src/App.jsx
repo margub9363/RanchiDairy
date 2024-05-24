@@ -16,6 +16,7 @@ import Tractor from "./components/Tractor";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AnimalFood from "./components/AnimalFood";
 import SignUpForm from "./components/SignUpForm";
+import LogInPage from "./components/LoginPage";
 
 function App() {
   return (
