@@ -15,6 +15,7 @@ import FoodDeliviries from "./components/FoodDeliviries";
 import Tractor from "./components/Tractor";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AnimalFood from "./components/AnimalFood";
+import SignUpForm from "./components/SignUpForm";
 
 function App() {
   return (

@@ -22,26 +22,6 @@ const Profile = () => {
           // validated={validated} onSubmit={handleSubmit}
         >
           <Row className="mb-3 no-change">
-            <Form.Group as={Col} md="4" controlId="validationCustom01">
-              <Form.Label className="no-change">First name</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                placeholder="First name"
-                defaultValue="Mark"
-              />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group as={Col} md="4" controlId="validationCustom02">
-              <Form.Label>Last name</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                placeholder="Last name"
-                defaultValue="Otto"
-              />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            </Form.Group>
             <Form.Group
               as={Col}
               md="4"
@@ -61,6 +41,26 @@ const Profile = () => {
                   Please choose a username.
                 </Form.Control.Feedback>
               </InputGroup>
+            </Form.Group>
+            <Form.Group as={Col} md="4" controlId="validationCustom01">
+              <Form.Label className="no-change">Name</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="First name"
+                defaultValue="Mark"
+              />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="4" controlId="validationCustom01">
+              <Form.Label className="no-change">Contact No</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="First name"
+                defaultValue="9031700000"
+              />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
           </Row>
           <Row className="mb-3">
