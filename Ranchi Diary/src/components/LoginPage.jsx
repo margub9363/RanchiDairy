@@ -56,7 +56,7 @@ const LogInPage = () => {
         <p className="mt-5 mb-3 text-body-secondary">© 2017–2024</p>
       </form>
       <Link to="/home">
-        <Button variant="danger">Cancel SignUp</Button>{" "}
+        <Button variant="danger">Cancel</Button>{" "}
       </Link>
     </>
   );
