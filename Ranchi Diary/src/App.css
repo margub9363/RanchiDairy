@@ -1,0 +1,42 @@
+.app-container {
+  display: flex;
+  height: 730px;
+}
+
+.content {
+  width: 100%;
+}
+
+.sidebar {
+  min-height: 1600px;
+}
+
+.post-card {
+  margin: 20px 50px;
+}
+
+.hashtag {
+  margin: 0px 3px;
+}
+
+.reactions {
+  margin: 15px 0 0 0;
+}
+
+.create-post {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 50px;
+}
+
+.homepage {
+  height: 65%;
+}
+
+.subscription-field-width {
+  width: 100px;
+}
+
+.subscription-timing-margin {
+  margin-top: 7px;
+}
