@@ -1,15 +1,25 @@
 package com.ranchiDiary.RanchiDiaryBackend.controller;
 
+import com.ranchiDiary.RanchiDiaryBackend.pojo.CustomerRequestBody;
+import com.ranchiDiary.RanchiDiaryBackend.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/abc")
+@RequestMapping("/customer")
 public class Customer {
 
-    @PostMapping("/test")
-    String testMethod(){
-        return "Hello World!";
+    @Autowired
+    private CustomerService
+            customerService;
+
+    @PostMapping("/insertCustomerRecord")
+    public int insertCustomerRecord(@RequestBody CustomerRequestBody customerRequestBody){
+        int id = customerService.saveCustomerDataInDatabase(customerRequestBody);
+        return id;
+
     }
 }
