@@ -1,4 +1,8 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import createSagaMiddleware from "redux-saga";
+import customerSaga from "./customerSaga";
+
+const saga = createSagaMiddleware();
 
 const customerSlice = createSlice({
   name: "customersListName",
@@ -26,12 +30,21 @@ const customerSlice = createSlice({
         dueAmount: 12.345,
       },
     ],
+    isLoading: false,
   },
   reducers: {
     addCustomer: (action, state) => {},
     removeCustomer: (action, state) => {},
-    getCustomersList: (action, state) => {
-      console.log(action, state);
+    getCustomersListFetch: (state) => {
+      state.isLoading = true;
+      console.log(state);
+    },
+    getCustomersListSuccess: (state, action) => {
+      state.customerListArray = action.payload;
+      state.isLoading = false;
+    },
+    getCustomersListFailure: (state) => {
+      state.isLoading = false;
     },
   },
 });
@@ -40,7 +53,16 @@ const ranchiDiaryStore = configureStore({
   reducer: {
     customerReducer: customerSlice.reducer,
   },
+  middleware: () => [saga],
 });
 
-export const coustomerActions = customerSlice.actions;
+saga.run(customerSaga);
+
+export const {
+  addCustomer,
+  removeCustomer,
+  getCustomersListFetch,
+  getCustomersListSuccess,
+} = customerSlice.actions;
+
 export default ranchiDiaryStore;
