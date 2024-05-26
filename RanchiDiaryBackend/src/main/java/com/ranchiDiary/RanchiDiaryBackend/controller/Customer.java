@@ -3,10 +3,10 @@ package com.ranchiDiary.RanchiDiaryBackend.controller;
 import com.ranchiDiary.RanchiDiaryBackend.pojo.CustomerRequestBody;
 import com.ranchiDiary.RanchiDiaryBackend.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/customer")
@@ -21,5 +21,17 @@ public class Customer {
         int id = customerService.saveCustomerDataInDatabase(customerRequestBody);
         return id;
 
+    }
+
+    @GetMapping("/getCustomerRecord/{id}")
+    public Optional<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> getCustomerDetail(@PathVariable("id") int id){
+        Optional<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> customer = customerService.getCustomerDetail(id);
+        return customer;
+    }
+
+    @GetMapping("/getAllCustomers")
+    public List<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> getAllCustomersList() {
+        List<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> allCustomerList = customerService.getAllCustomerList();
+        return allCustomerList;
     }
 }
