@@ -17,7 +17,7 @@ public class Customer {
     public int id;
     public String name;
     @Column(name = "contact_no")
-    public int contact_no;
+    public long contact_no;
     @Column(name = "due_amount")
     public float due_amount;
 //    blob picture;
