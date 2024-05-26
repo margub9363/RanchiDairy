@@ -61,8 +61,8 @@ const Customers = () => {
               <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
-                <td>{item.dueAmount}</td>
-                <td>{item.contactNo}</td>
+                <td>{item.due_amount}</td>
+                <td>{item.contact_no}</td>
                 <td>{item.address}</td>
               </tr>
             ))}

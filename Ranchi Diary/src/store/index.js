@@ -12,8 +12,8 @@ const customerSlice = createSlice({
         id: 1,
         name: "initial 0",
         address: "initial address",
-        contactNo: 12345,
-        dueAmount: 12.345,
+        contact_no: 12345,
+        due_amount: 12.345,
       },
       {
         id: 2,
