@@ -3,7 +3,10 @@ import { getCustomersListSuccess } from ".";
 // import { ADD_TO_CART, PRODUCT_LIST, SET_PRODUCT_LIST } from "./constant";
 
 function* getAllCustomers() {
-  const data = yield call("http://localhost:8083/customer/getAllCustomers");
+  console.log("getAllCustomers++++++++++");
+  const data = yield call(() =>
+    fetch("http://localhost:8083/customer/getAllCustomers")
+  );
   const formattedData = yield data.json();
   console.log("------------");
   console.log(formattedData);

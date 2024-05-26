@@ -1,11 +1,18 @@
+import { useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getCustomersListFetch } from "../store";
 
 const Customers = () => {
   const customerDetailFromStore = useSelector((store) => store.customerReducer);
   const customerListArray = customerDetailFromStore.customerListArray;
-  // console.log(customerListArray);
+  console.log(customerListArray);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCustomersListFetch());
+  }, [dispatch]);
 
   return (
     <>
