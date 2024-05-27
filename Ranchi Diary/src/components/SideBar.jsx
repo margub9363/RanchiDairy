@@ -79,6 +79,18 @@ const SideBar = () => {
           </li>{" "}
           <li>
             <NavLink
+              to="price"
+              className="nav-link text-white"
+              aria-current="page"
+            >
+              <svg className="bi pe-none me-2" width="16" height="16">
+                <use xlinkHref="#home"></use>
+              </svg>
+              Update Price
+            </NavLink>
+          </li>{" "}
+          <li>
+            <NavLink
               to="sendNotification"
               className="nav-link text-white"
               aria-current="page"

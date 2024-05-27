@@ -30,6 +30,12 @@ const customerSlice = createSlice({
         dueAmount: 12.345,
       },
     ],
+    prices: {
+      id: 1,
+      egg: 10,
+      milk: 40,
+      paneer: 50,
+    },
     isLoading: false,
   },
   reducers: {
@@ -45,6 +51,9 @@ const customerSlice = createSlice({
     },
     getCustomersListFailure: (state) => {
       state.isLoading = false;
+    },
+    getprices: (action, state) => {
+      console.log("@@@@@@@");
     },
   },
 });

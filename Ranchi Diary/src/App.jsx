@@ -17,6 +17,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AnimalFood from "./components/AnimalFood";
 import SignUpForm from "./components/SignUpForm";
 import LogInPage from "./components/LoginPage";
+import Price from "./components/Price";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               <Route path="/foodDeliviries" element={<FoodDeliviries />} />
               <Route path="/home" element={<HomePage />} />
               <Route path="/payment" element={<Payment />} />
+              <Route path="/price" element={<Price />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/sendNotification" element={<SendNotification />} />
               <Route path="/subscription" element={<Subscription />} />
