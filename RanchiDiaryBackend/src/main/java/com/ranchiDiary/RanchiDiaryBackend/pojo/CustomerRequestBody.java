@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public class CustomerRequestBody {
     public String name;
-    public int number;
+    public long number;
     public float dueAmount;
     public String address;
 /*
