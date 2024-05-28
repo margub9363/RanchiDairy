@@ -1,6 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import customerSaga from "./customerSaga";
+import priceSaga from "./priceSaga";
 
 const saga = createSagaMiddleware();
 
@@ -52,8 +53,12 @@ const customerSlice = createSlice({
     getCustomersListFailure: (state) => {
       state.isLoading = false;
     },
-    getprices: (action, state) => {
-      console.log("@@@@@@@");
+    getPriceFetch: (state) => {
+      state.isLoading = true;
+      console.log(state);
+    },
+    getpricesSuccess: (state, action) => {
+      state.prices = action.payload;
     },
   },
 });
@@ -66,12 +71,15 @@ const ranchiDiaryStore = configureStore({
 });
 
 saga.run(customerSaga);
+saga.run(priceSaga);
 
 export const {
   addCustomer,
   removeCustomer,
   getCustomersListFetch,
   getCustomersListSuccess,
+  getPriceFetch,
+  getpricesSuccess,
 } = customerSlice.actions;
 
 export default ranchiDiaryStore;

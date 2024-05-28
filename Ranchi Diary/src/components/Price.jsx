@@ -1,8 +1,16 @@
+import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getPriceFetch } from "../store";
 const Price = () => {
   const pricesFromStore = useSelector((store) => store.customerReducer);
   const pricesAvailalbeInStore = pricesFromStore.prices;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPriceFetch());
+  }, [dispatch]);
   return (
     <>
       Update the Prices
