@@ -9,6 +9,13 @@ const saga = createSagaMiddleware();
 const customerSlice = createSlice({
   name: "customersListName",
   initialState: {
+    customerProfile: {
+      id: 0,
+      name: "Default",
+      contact_no: 0,
+      due_amount: 0.0,
+      address: "abc def xyz",
+    },
     customerListArray: [
       {
         id: 1,
@@ -65,6 +72,15 @@ const customerSlice = createSlice({
     udpatePrices: (state, action) => {
       console.log("*******udpatePrices********");
     },
+
+    fectchSpecificCustomerInfo: (state, action) => {
+      console.log("******fectchSpecificCustomerInfo****");
+      state.isLoading = true;
+    },
+    getSpecificCustomerInfoSuccess: (state, action) => {
+      state.customerProfile = action.payload;
+      state.isLoading = false;
+    },
   },
 });
 
@@ -85,6 +101,8 @@ export const {
   getPriceFetch,
   getpricesSuccess,
   udpatePrices,
+  fectchSpecificCustomerInfo,
+  getSpecificCustomerInfoSuccess,
 } = customerSlice.actions;
 
 export default ranchiDiaryStore;

@@ -7,7 +7,6 @@ import { getCustomersListFetch } from "../store";
 const Customers = () => {
   const customerDetailFromStore = useSelector((store) => store.customerReducer);
   const customerListArray = customerDetailFromStore.customerListArray;
-  console.log(customerListArray);
 
   const dispatch = useDispatch();
   useEffect(() => {

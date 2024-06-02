@@ -7,8 +7,6 @@ function* getPriceFromBackend() {
   console.log("getPriceFromBackend******");
   const data = yield call(() => fetch("http://localhost:8083/price/getPrices"));
   const formattedData = yield data.json();
-  console.log("------------");
-  console.log(formattedData);
   yield put(getpricesSuccess(formattedData));
   //   yield put({ type: SET_PRODUCT_LIST, data });
 }
