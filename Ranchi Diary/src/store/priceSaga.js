@@ -1,5 +1,5 @@
 import { takeEvery, put, call } from "redux-saga/effects";
-import { getpricesSuccess } from ".";
+import { getPriceFetch, getpricesSuccess } from ".";
 import axios from "axios";
 // import { ADD_TO_CART, PRODUCT_LIST, SET_PRODUCT_LIST } from "./constant";
 
@@ -14,7 +14,7 @@ function* getPriceFromBackend() {
 }
 
 function* updatePriceviaBackend(data) {
-  console.log("updatePriceFromBackend******");
+  console.log("updatePriceviaBackend******");
 
   const requestBody = data.payload;
   const output = yield call(
@@ -23,7 +23,7 @@ function* updatePriceviaBackend(data) {
     requestBody
   );
   console.log("------------");
-  yield put(getPriceFromBackend);
+  yield put(getPriceFetch());
 }
 
 function* priceSaga() {

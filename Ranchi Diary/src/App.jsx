@@ -18,8 +18,16 @@ import AnimalFood from "./components/AnimalFood";
 import SignUpForm from "./components/SignUpForm";
 import LogInPage from "./components/LoginPage";
 import Price from "./components/Price";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getPriceFetch } from "./store";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPriceFetch());
+  }, [dispatch]);
+
   return (
     <>
       <div className="app-container">

@@ -4,10 +4,6 @@ import { getPriceFetch, udpatePrices } from "../store";
 
 const Price = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getPriceFetch());
-  }, [dispatch]);
-
   const pricesFromStore = useSelector((store) => store.customerReducer);
   const pricesAvailalbeInStore = pricesFromStore.prices;
 
@@ -33,7 +29,7 @@ const Price = () => {
             id="eggPrice"
             name="eggPrice"
             aria-describedby="emailHelp"
-            placeholder={pricesAvailalbeInStore.egg}
+            defaultValue={pricesAvailalbeInStore.egg}
           />
         </div>
         <div className="mb-3">
@@ -46,7 +42,7 @@ const Price = () => {
             id="milkPrice"
             name="milkPrice"
             aria-describedby="emailHelp"
-            placeholder={pricesAvailalbeInStore.milk}
+            defaultValue={pricesAvailalbeInStore.milk}
           />
         </div>
         <div className="mb-3">
@@ -59,7 +55,7 @@ const Price = () => {
             id="paneerPrice"
             name="paneerPrice"
             aria-describedby="emailHelp"
-            placeholder={pricesAvailalbeInStore.paneer}
+            defaultValue={pricesAvailalbeInStore.paneer}
           />
         </div>
 
