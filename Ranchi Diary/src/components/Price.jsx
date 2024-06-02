@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPriceFetch, udpatePrices } from "../store";
 
 const Price = () => {
-  const pricesFromStore = useSelector((store) => store.customerReducer);
-  const pricesAvailalbeInStore = pricesFromStore.prices;
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPriceFetch());
   }, [dispatch]);
+
+  const pricesFromStore = useSelector((store) => store.customerReducer);
+  const pricesAvailalbeInStore = pricesFromStore.prices;
 
   const submitFormHandler = (e) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ const Price = () => {
             id="eggPrice"
             name="eggPrice"
             aria-describedby="emailHelp"
-            defaultValue={pricesAvailalbeInStore.egg}
+            placeholder={pricesAvailalbeInStore.egg}
           />
         </div>
         <div className="mb-3">
@@ -46,7 +46,7 @@ const Price = () => {
             id="milkPrice"
             name="milkPrice"
             aria-describedby="emailHelp"
-            defaultValue={pricesAvailalbeInStore.milk}
+            placeholder={pricesAvailalbeInStore.milk}
           />
         </div>
         <div className="mb-3">
@@ -59,7 +59,7 @@ const Price = () => {
             id="paneerPrice"
             name="paneerPrice"
             aria-describedby="emailHelp"
-            defaultValue={pricesAvailalbeInStore.paneer}
+            placeholder={pricesAvailalbeInStore.paneer}
           />
         </div>
 

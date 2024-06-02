@@ -57,7 +57,6 @@ const customerSlice = createSlice({
     getPriceFetch: (state) => {
       state.isLoading = true;
       console.log("*******getPriceFetch********");
-      console.log(state);
     },
     getpricesSuccess: (state, action) => {
       state.prices = action.payload;

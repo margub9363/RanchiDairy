@@ -13,7 +13,7 @@ function* getPriceFromBackend() {
   //   yield put({ type: SET_PRODUCT_LIST, data });
 }
 
-function* updatePriceFromBackend(data) {
+function* updatePriceviaBackend(data) {
   console.log("updatePriceFromBackend******");
 
   const requestBody = data.payload;
@@ -22,16 +22,13 @@ function* updatePriceFromBackend(data) {
     "http://localhost:8083/price/update",
     requestBody
   );
-  const formattedData = yield output.json();
   console.log("------------");
-  console.log(formattedData);
-  yield put(getpricesSuccess(formattedData));
-  //   yield put({ type: SET_PRODUCT_LIST, data });
+  yield put(getPriceFromBackend);
 }
 
 function* priceSaga() {
   console.log("******priceSaga***************");
   yield takeEvery("customersListName/getPriceFetch", getPriceFromBackend);
-  yield takeEvery("customersListName/udpatePrices", updatePriceFromBackend);
+  yield takeEvery("customersListName/udpatePrices", updatePriceviaBackend);
 }
 export default priceSaga;
