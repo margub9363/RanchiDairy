@@ -20,7 +20,7 @@ function* testCart() {
 }
 
 function* customerSaga() {
-  console.log("***********");
+  console.log("********customerSaga*********");
   yield takeEvery("customersListName/getCustomersListFetch", getAllCustomers);
   //   yield takeEvery(ADD_TO_CART, testCart);
 }
