@@ -7,9 +7,9 @@ import { Provider } from "react-redux";
 import ranchiDiaryStore from "./store/index.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Provider store={ranchiDiaryStore}>
-      <Main />
-    </Provider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <Provider store={ranchiDiaryStore}>
+    <Main />
+  </Provider>
+  // </React.StrictMode>
 );

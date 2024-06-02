@@ -17,27 +17,12 @@ const Price = () => {
     const data = Object.fromEntries(formData.entries());
     console.log(data);
     dispatch(udpatePrices(data));
-    // const ddddd = useDispatch();
-    // ddddd(udpatePrices(data));
-    // dispatch(udpatePrices(data));
-    // dispatch(getPriceFetch());
-  };
-
-  const handleClick = () => {
-    console.log("Dispatching action from button click");
-    const data = {
-      eggPrice: 200002,
-      milkPrice: 200002,
-      paneerPrice: 200002,
-    };
-    dispatch(udpatePrices(data));
   };
 
   return (
     <>
       Update Prices
       <form onSubmit={submitFormHandler}>
-        {/* <form> */}
         <div className="mb-3">
           <label htmlFor="eggPrice" className="form-label">
             Egg / pc
@@ -78,7 +63,6 @@ const Price = () => {
           />
         </div>
 
-        {/* <button type="submit" className="btn btn-primary" onClick={handleClick}> */}
         <button type="submit" className="btn btn-primary">
           Submit
         </button>

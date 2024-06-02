@@ -61,11 +61,10 @@ const customerSlice = createSlice({
     },
     getpricesSuccess: (state, action) => {
       state.prices = action.payload;
+      state.isLoading = false;
     },
     udpatePrices: (state, action) => {
-      console.log(state);
       console.log("*******udpatePrices********");
-      // console.log(action);
     },
   },
 });
@@ -74,13 +73,10 @@ const ranchiDiaryStore = configureStore({
   reducer: {
     customerReducer: customerSlice.reducer,
   },
-  // middleware: () => [saga],
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(saga),
 });
 
 saga.run(rootSaga);
-// saga.run(customerSaga);
-// saga.run(priceSaga);
 
 export const {
   addCustomer,

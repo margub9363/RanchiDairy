@@ -16,11 +16,6 @@ function* getPriceFromBackend() {
 function* updatePriceFromBackend(data) {
   console.log("updatePriceFromBackend******");
 
-  // let updatedPrice = {
-  //   eggPrice: 200003,
-  //   milkPrice: 200003,
-  //   paneerPrice: 200003,
-  // };
   const requestBody = data.payload;
   const output = yield call(
     axios.post,
