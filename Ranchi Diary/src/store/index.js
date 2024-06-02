@@ -34,9 +34,9 @@ const customerSlice = createSlice({
     ],
     prices: {
       id: 1,
-      egg: 10,
-      milk: 40,
-      paneer: 50,
+      egg: 10000,
+      milk: 10000,
+      paneer: 10000,
     },
     isLoading: false,
   },

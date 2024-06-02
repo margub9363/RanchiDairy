@@ -29,7 +29,7 @@ const Price = () => {
             id="eggPrice"
             name="eggPrice"
             aria-describedby="emailHelp"
-            defaultValue={pricesAvailalbeInStore.egg}
+            placeholder={pricesAvailalbeInStore.egg}
           />
         </div>
         <div className="mb-3">
@@ -42,7 +42,7 @@ const Price = () => {
             id="milkPrice"
             name="milkPrice"
             aria-describedby="emailHelp"
-            defaultValue={pricesAvailalbeInStore.milk}
+            placeholder={pricesAvailalbeInStore.milk}
           />
         </div>
         <div className="mb-3">
@@ -55,7 +55,7 @@ const Price = () => {
             id="paneerPrice"
             name="paneerPrice"
             aria-describedby="emailHelp"
-            defaultValue={pricesAvailalbeInStore.paneer}
+            placeholder={pricesAvailalbeInStore.paneer}
           />
         </div>
 
