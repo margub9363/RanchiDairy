@@ -35,4 +35,10 @@ public class CustomerService {
         List<Customer> customersList = customerRepository.findAll();
         return customersList;
     }
+
+    public long getNextAvailableId() {
+        long maxId = this.customerRepository.findMaxId();
+        return maxId = maxId + 1;
+    }
+
 }

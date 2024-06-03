@@ -20,7 +20,6 @@ public class Customer {
     public int insertCustomerRecord(@RequestBody CustomerRequestBody customerRequestBody){
         int id = customerService.saveCustomerDataInDatabase(customerRequestBody);
         return id;
-
     }
 
     @GetMapping("/getCustomerRecord/{id}")
@@ -33,5 +32,11 @@ public class Customer {
     public List<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> getAllCustomersList() {
         List<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> allCustomerList = customerService.getAllCustomerList();
         return allCustomerList;
+    }
+
+    @GetMapping("/nextID")
+    public long getNextAvailableIdForSignUp() {
+        long nextAvailableId = customerService.getNextAvailableId();
+        return nextAvailableId;
     }
 }
