@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchNextAvailableID } from "../store";
 
 function SignUpForm() {
   const [validated, setValidated] = useState(false);
+
+  const customerDetailFromStore = useSelector((store) => store.customerReducer);
+  const nextAvailableID = customerDetailFromStore.nextAvailableId;
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchNextAvailableID());
+  }, [dispatch]);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -22,6 +32,7 @@ function SignUpForm() {
   return (
     <>
       <h1>Welcome To Ranchi Diary Sign Up Form</h1>
+      Customer ID : <input value={nextAvailableID} />
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Row className="mb-3">
           <Form.Group as={Col} md="4" controlId="validationCustom01">
