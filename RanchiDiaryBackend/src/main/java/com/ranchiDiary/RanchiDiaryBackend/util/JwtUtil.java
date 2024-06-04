@@ -1,22 +1,29 @@
 package com.ranchiDiary.RanchiDiaryBackend.util;
 
 
+import com.ranchiDiary.RanchiDiaryBackend.model.AppUser;
+import com.ranchiDiary.RanchiDiaryBackend.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-@Component
+
+@Service
 public class JwtUtil {
 
-    //    private final String SECRET_KEY = "secret";
-    private final String SECRET_KEY = "secretsecretsecretsecretsecretsecretsecretsecretsecretsecret";
+    private String SECRET_KEY = "secretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecretsecret";
+
+    @Autowired
+    private UserRepository userRepository;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -30,7 +37,6 @@ public class JwtUtil {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
-
     private Claims extractAllClaims(String token) {
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
     }
@@ -41,6 +47,9 @@ public class JwtUtil {
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
+        // Add the user's role as a claim
+        AppUser user = userRepository.findByUsername(userDetails.getUsername());
+        claims.put("role", user.getRole());
         return createToken(claims, userDetails.getUsername());
     }
 

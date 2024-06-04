@@ -1,7 +1,9 @@
 package com.ranchiDiary.RanchiDiaryBackend.controller;
 
+import com.ranchiDiary.RanchiDiaryBackend.model.AppUser;
 import com.ranchiDiary.RanchiDiaryBackend.model.AuthenticationRequest;
 import com.ranchiDiary.RanchiDiaryBackend.model.AuthenticationResponse;
+import com.ranchiDiary.RanchiDiaryBackend.repository.UserRepository;
 import com.ranchiDiary.RanchiDiaryBackend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,10 @@ public class AuthController {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+    @Autowired
+    private UserRepository userRepository;
+
+    @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         try {
             authenticationManager.authenticate(
@@ -37,6 +42,10 @@ public class AuthController {
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        // Fetch the user's role from the database
+        AppUser user = userRepository.findByUsername(authenticationRequest.getUsername());
+        String role = user.getRole();
+
+        return ResponseEntity.ok(new AuthenticationResponse(jwt, role));
     }
 }
