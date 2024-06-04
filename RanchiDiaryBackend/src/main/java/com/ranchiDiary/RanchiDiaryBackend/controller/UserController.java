@@ -20,6 +20,7 @@ public class UserController {
     @PostMapping("/register")
     public String registerUser(@RequestBody AppUser appUser) {
         appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
+        appUser.setRole("CUSTOEMR");
         userRepository.save(appUser);
         return "User registered successfully";
     }
