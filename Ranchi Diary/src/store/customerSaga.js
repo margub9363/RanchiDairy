@@ -1,5 +1,5 @@
 import { takeEvery, put, call } from "redux-saga/effects";
-import { getCustomersListSuccess } from ".";
+import { getCustomersListSuccess, updatingJwtAndRole } from ".";
 import axios from "axios";
 // import { ADD_TO_CART, PRODUCT_LIST, SET_PRODUCT_LIST } from "./constant";
 
@@ -11,6 +11,7 @@ function* getJwtTokenAndRole(data) {
     data.payload
   );
   console.log(output.data);
+  yield put(updatingJwtAndRole(output.data));
 }
 
 function* getAllCustomers() {
