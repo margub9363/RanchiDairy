@@ -9,6 +9,10 @@ const saga = createSagaMiddleware();
 const customerSlice = createSlice({
   name: "customersListName",
   initialState: {
+    loggedInUser: {
+      jwtToken: "abcd",
+      role: "CUSTOMER",
+    },
     customerListArray: [
       {
         id: 1,
@@ -65,6 +69,13 @@ const customerSlice = createSlice({
     udpatePrices: (state, action) => {
       console.log("*******udpatePrices********");
     },
+    loggingIn: (state, action) => {
+      console.log(action);
+    },
+    updatingJwtAndRole: (state, payload) => {
+      console.log(payload);
+      state.loggedInUser = payload;
+    },
   },
 });
 
@@ -85,6 +96,8 @@ export const {
   getPriceFetch,
   getpricesSuccess,
   udpatePrices,
+  loggingIn,
+  updatingJwtAndRole,
 } = customerSlice.actions;
 
 export default ranchiDiaryStore;

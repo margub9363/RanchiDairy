@@ -1,6 +1,17 @@
 import { takeEvery, put, call } from "redux-saga/effects";
 import { getCustomersListSuccess } from ".";
+import axios from "axios";
 // import { ADD_TO_CART, PRODUCT_LIST, SET_PRODUCT_LIST } from "./constant";
+
+function* getJwtTokenAndRole(data) {
+  console.log(data.payload);
+  const output = yield call(
+    axios.post,
+    "http://localhost:8083/authenticate",
+    data.payload
+  );
+  console.log(output.data);
+}
 
 function* getAllCustomers() {
   console.log("getAllCustomers++++++++++");
@@ -22,6 +33,7 @@ function* testCart() {
 function* customerSaga() {
   console.log("********customerSaga*********");
   yield takeEvery("customersListName/getCustomersListFetch", getAllCustomers);
+  yield takeEvery("customersListName/loggingIn", getJwtTokenAndRole);
   //   yield takeEvery(ADD_TO_CART, testCart);
 }
 export default customerSaga;
