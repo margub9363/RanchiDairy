@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPriceFetch, udpatePrices } from "../store";
+import Button from "react-bootstrap/Button";
 
 const Price = () => {
   const dispatch = useDispatch();
@@ -16,54 +17,54 @@ const Price = () => {
   };
 
   return (
-    <>
-      Update Prices
-      <form onSubmit={submitFormHandler}>
-        <div className="mb-3">
-          <label htmlFor="eggPrice" className="form-label">
-            Egg / pc
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            id="eggPrice"
-            name="eggPrice"
-            aria-describedby="emailHelp"
-            placeholder={pricesAvailalbeInStore.egg}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="milkPrice" className="form-label">
-            Milk / lit
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            id="milkPrice"
-            name="milkPrice"
-            aria-describedby="emailHelp"
-            placeholder={pricesAvailalbeInStore.milk}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="paneerPrice" className="form-label">
-            Paneer / kg
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            id="paneerPrice"
-            name="paneerPrice"
-            aria-describedby="emailHelp"
-            placeholder={pricesAvailalbeInStore.paneer}
-          />
-        </div>
-
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    </>
+    <div style={{ margin: "5px", width: "20%" }}>
+      <div className="input-group mb-3">
+        <span
+          className="input-group-text subscription-field-width"
+          id="inputGroup-sizing-default"
+        >
+          Egg / piece
+        </span>
+        <input
+          type="text"
+          className="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          placeholder={pricesAvailalbeInStore.egg}
+        />
+      </div>
+      <div className="input-group mb-3">
+        <span
+          className="input-group-text subscription-field-width"
+          id="inputGroup-sizing-default"
+        >
+          Paneer / kg
+        </span>
+        <input
+          type="text"
+          className="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          placeholder={pricesAvailalbeInStore.paneer}
+        />
+      </div>
+      <div className="input-group mb-3">
+        <span
+          className="input-group-text subscription-field-width"
+          id="inputGroup-sizing-default"
+        >
+          Milk / lit
+        </span>
+        <input
+          type="text"
+          className="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          placeholder={pricesAvailalbeInStore.milk}
+        />
+      </div>
+      <Button variant="success">Update Price</Button>{" "}
+    </div>
   );
 };
 

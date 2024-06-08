@@ -3,7 +3,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 
 const Doctors = () => {
   return (
-    <>
+    <div style={{ margin: "5px" }}>
       <h1>Doctors Visit Details</h1>
       <div>
         <InputGroup size="sm" className="mb-3">
@@ -68,7 +68,7 @@ const Doctors = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 };
 
