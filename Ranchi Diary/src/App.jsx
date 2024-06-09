@@ -18,7 +18,7 @@ import AnimalFood from "./components/AnimalFood";
 import SignUpForm from "./components/SignUpForm";
 import LogInPage from "./components/LoginPage";
 import Price from "./components/Price";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getPriceFetch } from "./store";
 
@@ -28,10 +28,18 @@ function App() {
     dispatch(getPriceFetch());
   }, [dispatch]);
 
+  const customerDetailFromStore = useSelector((store) => store.customerReducer);
+  const userDetails = customerDetailFromStore.loggedInUserDetail;
+  console.log(userDetails);
+
+  const disiplaySideBar = () => {
+    if (userDetails.jwtToken) <SideBar />;
+  };
+
   return (
     <>
       <div className="app-container">
-        <SideBar />
+        {userDetails.jwtToken != null ? <SideBar /> : <></>}
         <div className="content">
           <Header />
           <div className="homepage">

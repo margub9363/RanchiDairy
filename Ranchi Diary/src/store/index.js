@@ -9,6 +9,15 @@ const saga = createSagaMiddleware();
 const customerSlice = createSlice({
   name: "customersListName",
   initialState: {
+    loggedInUserDetail: {
+      jwtToken: 1,
+      id: 0,
+      name: "Tannu",
+      ROLE: "ADMIN",
+      contact_no: 9031790301,
+      due_amount: 123.456,
+      address: "Ranchi Jharkhand Ranchi 834002",
+    },
     customerListArray: [
       {
         id: 1,
@@ -65,6 +74,9 @@ const customerSlice = createSlice({
     udpatePrices: (state, action) => {
       console.log("*******udpatePrices********");
     },
+    logoutFunctionality: (state, action) => {
+      state.loggedInUserDetail.jwtToken = null;
+    },
   },
 });
 
@@ -85,6 +97,7 @@ export const {
   getPriceFetch,
   getpricesSuccess,
   udpatePrices,
+  logoutFunctionality,
 } = customerSlice.actions;
 
 export default ranchiDiaryStore;
