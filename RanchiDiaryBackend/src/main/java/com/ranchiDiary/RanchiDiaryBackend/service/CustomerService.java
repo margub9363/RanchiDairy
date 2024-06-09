@@ -4,8 +4,10 @@ import com.ranchiDiary.RanchiDiaryBackend.entity.Customer;
 import com.ranchiDiary.RanchiDiaryBackend.pojo.CustomerRequestBody;
 import com.ranchiDiary.RanchiDiaryBackend.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,5 +36,16 @@ public class CustomerService {
     public List<Customer> getAllCustomerList() {
         List<Customer> customersList = customerRepository.findAll();
         return customersList;
+    }
+
+//    public List<Integer> getListOfReadMessagesForParticularCustomer(int id) {
+        public void getListOfReadMessagesForParticularCustomer(int id) {
+        Optional<Customer> byId = customerRepository.findById(id);
+        String[] sss = byId.get().notifications_read.split(" ");
+        List<Integer> notificationsRead = new ArrayList<>();
+        for(String s : sss) {
+            notificationsRead.add(Integer.parseInt(s));
+        }
+        System.out.println(notificationsRead);
     }
 }

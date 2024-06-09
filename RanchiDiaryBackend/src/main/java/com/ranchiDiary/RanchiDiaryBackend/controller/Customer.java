@@ -2,6 +2,7 @@ package com.ranchiDiary.RanchiDiaryBackend.controller;
 
 import com.ranchiDiary.RanchiDiaryBackend.pojo.CustomerRequestBody;
 import com.ranchiDiary.RanchiDiaryBackend.service.CustomerService;
+import com.ranchiDiary.RanchiDiaryBackend.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,9 @@ public class Customer {
     @Autowired
     private CustomerService
             customerService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     @PostMapping("/insertCustomerRecord")
     public int insertCustomerRecord(@RequestBody CustomerRequestBody customerRequestBody){
@@ -33,5 +37,17 @@ public class Customer {
     public List<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> getAllCustomersList() {
         List<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> allCustomerList = customerService.getAllCustomerList();
         return allCustomerList;
+    }
+
+    @GetMapping("/getUnreadNotification/{customerId}")
+//    public List<String> getUnreadNotification (@PathVariable int customerId) {
+        public void getUnreadNotification (@PathVariable int customerId) {
+        customerService.getListOfReadMessagesForParticularCustomer(customerId);
+        return;
+    }
+
+    @GetMapping("/getFirstNotification")
+    public Optional<com.ranchiDiary.RanchiDiaryBackend.entity.Notification> getFirstNotification () {
+        return notificationService.firstNotification();
     }
 }

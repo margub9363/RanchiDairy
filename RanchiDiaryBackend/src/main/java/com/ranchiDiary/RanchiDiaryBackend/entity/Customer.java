@@ -22,5 +22,6 @@ public class Customer {
     public float due_amount;
 //    blob picture;
     public String address;
+    public String notifications_read;
 
 }
