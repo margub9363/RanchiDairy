@@ -41,13 +41,13 @@ public class Customer {
 
     @GetMapping("/getUnreadNotification/{customerId}")
 //    public List<String> getUnreadNotification (@PathVariable int customerId) {
-        public void getUnreadNotification (@PathVariable int customerId) {
-        customerService.getListOfReadMessagesForParticularCustomer(customerId);
-        return;
+        public List<String> getUnreadNotification (@PathVariable int customerId) {
+        List<String> listOfUnReadMessagesForParticularCustomer = customerService.getListOfReadMessagesForParticularCustomer(customerId);
+        return listOfUnReadMessagesForParticularCustomer;
     }
 
-    @GetMapping("/getFirstNotification")
-    public Optional<com.ranchiDiary.RanchiDiaryBackend.entity.Notification> getFirstNotification () {
-        return notificationService.firstNotification();
+    @GetMapping("/markNotificationRead/{customerId}/{notificationId}")
+    public void markNotificationAsRead(@PathVariable int customerId, @PathVariable int notificationId) {
+        customerService.markTheNotificationAsRead(customerId,notificationId);
     }
 }

@@ -22,5 +22,6 @@ public class Notification {
 
     private String message;
 
-    private Date notification_date;
+    @Column(name = "notification_date")
+    private Date notificationDate;
 }
