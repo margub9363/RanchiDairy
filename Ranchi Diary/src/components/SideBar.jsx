@@ -9,6 +9,7 @@ const SideBar = () => {
     { diplayName: "Profile", navigation: "profile" },
     { diplayName: "Dashboard", navigation: "dashboard" },
     { diplayName: "Subscription", navigation: "subscription" },
+    { diplayName: "Notifications", navigation: "notificationWindow" },
     // { diplayName: "Logout", navigation: "home" },
   ];
   const AdminNav = [

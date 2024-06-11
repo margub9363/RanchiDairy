@@ -11,12 +11,14 @@ const customerSlice = createSlice({
   initialState: {
     loggedInUserDetail: {
       jwtToken: 1,
-      id: 0,
+      id: 1,
+      notificationMwssages: ["Test1", "Test2"],
       name: "Tannu",
-      ROLE: "ADMIN",
+      ROLE: "CUSTOMER",
       contact_no: 9031790301,
       due_amount: 123.456,
       address: "Ranchi Jharkhand Ranchi 834002",
+      unreadNotifications: "0",
     },
     customerListArray: [
       {
@@ -77,6 +79,13 @@ const customerSlice = createSlice({
     logoutFunctionality: (state, action) => {
       state.loggedInUserDetail.jwtToken = null;
     },
+    getUnreadNotificationsFetch: (state, action) => {
+      state.isLoading = true;
+      console.log("*******getUnreadNotifications********");
+    },
+    getUnreadNotificationsSuccess: (state, action) => {
+      state.loggedInUserDetail.notificationMwssages = action.payload;
+    },
   },
 });
 
@@ -98,6 +107,8 @@ export const {
   getpricesSuccess,
   udpatePrices,
   logoutFunctionality,
+  getUnreadNotificationsFetch,
+  getUnreadNotificationsSuccess,
 } = customerSlice.actions;
 
 export default ranchiDiaryStore;

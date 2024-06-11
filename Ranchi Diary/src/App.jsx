@@ -21,6 +21,7 @@ import Price from "./components/Price";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getPriceFetch } from "./store";
+import NotificationWindow from "./components/Notifications";
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +53,10 @@ function App() {
               <Route path="/doctor" element={<Doctors />} />
               <Route path="/foodDeliviries" element={<FoodDeliviries />} />
               <Route path="/home" element={<HomePage />} />
+              <Route
+                path="/notificationWindow"
+                element={<NotificationWindow />}
+              />
               <Route path="/payment" element={<Payment />} />
               <Route path="/price" element={<Price />} />
               <Route path="/profile" element={<Profile />} />
