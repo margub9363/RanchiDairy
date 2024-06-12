@@ -17,8 +17,8 @@ const LogInPage = () => {
   };
 
   return (
-    <>
-      <form onSubmit={LogInPageHandler}>
+    <div style={{ marginTop: "20px" }}>
+      <form style={{ width: "25%", marginLeft: "30%" }} onSubmit={LogInPageHandler}>
         <img
           className="mb-4"
           src="/docs/5.3/assets/brand/bootstrap-logo.svg"
@@ -67,12 +67,13 @@ const LogInPage = () => {
         >
           Sign in
         </button>
-        <p className="mt-5 mb-3 text-body-secondary">© 2017–2024</p>
       </form>
-      <Link to="/home">
-        <Button variant="danger">Cancel</Button>{" "}
+      <Link to="/home" style={{ margin: "30%" }}>
+        <Button variant="danger" style={{ width: "25%", marginTop: "10px" }}>
+          Cancel
+        </Button>{" "}
       </Link>
-    </>
+    </div>
   );
 };
 

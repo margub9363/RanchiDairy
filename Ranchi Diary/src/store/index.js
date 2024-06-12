@@ -9,9 +9,28 @@ const saga = createSagaMiddleware();
 const customerSlice = createSlice({
   name: "customersListName",
   initialState: {
-    loggedInUser: {
-      jwtToken: "abcd",
+    loggedInUserDetail: {
+      jwtToken: 1,
       role: "CUSTOMER",
+      id: 2,
+      notificationMwssages: [
+        {
+          id: 1,
+          title: "test",
+          message: "asd",
+        },
+        {
+          id: 6,
+          title: "qwe",
+          message: "sdfds",
+        },
+      ],
+      name: "Tannu",
+      ROLE: "CUSTOMER",
+      contact_no: 9031790301,
+      due_amount: 123.456,
+      address: "Ranchi Jharkhand Ranchi 834002",
+      unreadNotifications: "0",
     },
     customerListArray: [
       {
@@ -79,6 +98,20 @@ const customerSlice = createSlice({
       state.loggedInUser = action.payload;
       console.log(state.loggedInUser.jwt);
     },
+    logoutFunctionality: (state, action) => {
+      state.loggedInUserDetail.jwtToken = null;
+    },
+    getUnreadNotificationsFetch: (state, action) => {
+      state.isLoading = true;
+      console.log("*******getUnreadNotifications********");
+    },
+    getUnreadNotificationsSuccess: (state, action) => {
+      state.loggedInUserDetail.notificationMwssages = action.payload;
+    },
+    markNotificationAsRead: (state, action) => {
+      console.log("*******markNotificationAsRead********");
+      console.log(action);
+    },
   },
 });
 
@@ -101,6 +134,10 @@ export const {
   udpatePrices,
   loggingIn,
   updatingJwtAndRole,
+  logoutFunctionality,
+  getUnreadNotificationsFetch,
+  getUnreadNotificationsSuccess,
+  markNotificationAsRead,
 } = customerSlice.actions;
 
 export default ranchiDiaryStore;
