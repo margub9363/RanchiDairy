@@ -97,6 +97,10 @@ const customerSlice = createSlice({
     getUnreadNotificationsSuccess: (state, action) => {
       state.loggedInUserDetail.notificationMwssages = action.payload;
     },
+    markNotificationAsRead: (state, action) => {
+      console.log("*******markNotificationAsRead********");
+      console.log(action);
+    },
   },
 });
 
@@ -120,6 +124,7 @@ export const {
   logoutFunctionality,
   getUnreadNotificationsFetch,
   getUnreadNotificationsSuccess,
+  markNotificationAsRead,
 } = customerSlice.actions;
 
 export default ranchiDiaryStore;

@@ -4,7 +4,7 @@ import { getUnreadNotificationsFetch } from "../store";
 import { useEffect } from "react";
 
 const NotificationWindow = () => {
-  const customerid = useSelector(
+  const customerId = useSelector(
     (store) => store.customerReducer.loggedInUserDetail.id
   );
   const unReadNotificationMessages = useSelector(
@@ -14,8 +14,8 @@ const NotificationWindow = () => {
   const dispatch = useDispatch();
   //   dispatch(getUnreadNotificationsFetch(customerid));
   useEffect(() => {
-    dispatch(getUnreadNotificationsFetch(customerid));
-  }, [customerid]);
+    dispatch(getUnreadNotificationsFetch(customerId));
+  }, []);
 
   console.log("unReadNotificationMessages++++++++++++");
   console.log(unReadNotificationMessages);
@@ -24,7 +24,11 @@ const NotificationWindow = () => {
     <>
       This pages will show the unread notifications.
       {unReadNotificationMessages.map((message) => (
-        <NotificatonCard props={message} />
+        <NotificatonCard
+          message={message}
+          customerId={customerId}
+          key={message.id}
+        />
       ))}
     </>
   );
