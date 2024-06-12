@@ -1,10 +1,24 @@
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import { useDispatch } from "react-redux";
+import { loggingIn } from "../store";
 
 const LogInPage = () => {
+  const dispatch = useDispatch();
+
+  const LogInPageHandler = (e) => {
+    e.preventDefault();
+    // console.log(e.target[0].value);
+    const creds = {
+      username: e.target[0].value,
+      password: e.target[1].value,
+    };
+    dispatch(loggingIn(creds));
+  };
+
   return (
     <div style={{ marginTop: "20px" }}>
-      <form style={{ width: "25%", marginLeft: "30%" }}>
+      <form style={{ width: "25%", marginLeft: "30%" }} onSubmit={LogInPageHandler}>
         <img
           className="mb-4"
           src="/docs/5.3/assets/brand/bootstrap-logo.svg"
@@ -16,13 +30,13 @@ const LogInPage = () => {
 
         <div className="form-floating">
           <input
-            type="email"
+            type="text"
             className="form-control"
             id="floatingInput"
             placeholder="name@example.com"
             fdprocessedid="q4bea"
           />
-          <label htmlFor="floatingInput">User Id</label>
+          <label htmlFor="floatingInput">Customer ID</label>
         </div>
         <div className="form-floating">
           <input

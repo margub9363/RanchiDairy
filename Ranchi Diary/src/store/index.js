@@ -11,6 +11,7 @@ const customerSlice = createSlice({
   initialState: {
     loggedInUserDetail: {
       jwtToken: 1,
+      role: "CUSTOMER",
       id: 2,
       notificationMwssages: [
         {
@@ -86,6 +87,16 @@ const customerSlice = createSlice({
     },
     udpatePrices: (state, action) => {
       console.log("*******udpatePrices********");
+      console.log(state.initialState);
+      console.log(action);
+    },
+    loggingIn: (state, action) => {
+      console.log(action);
+    },
+    updatingJwtAndRole: (state, action) => {
+      console.log(action);
+      state.loggedInUser = action.payload;
+      console.log(state.loggedInUser.jwt);
     },
     logoutFunctionality: (state, action) => {
       state.loggedInUserDetail.jwtToken = null;
@@ -121,6 +132,8 @@ export const {
   getPriceFetch,
   getpricesSuccess,
   udpatePrices,
+  loggingIn,
+  updatingJwtAndRole,
   logoutFunctionality,
   getUnreadNotificationsFetch,
   getUnreadNotificationsSuccess,
