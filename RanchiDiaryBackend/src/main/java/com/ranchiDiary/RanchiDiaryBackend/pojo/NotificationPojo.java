@@ -1,9 +1,12 @@
 package com.ranchiDiary.RanchiDiaryBackend.pojo;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+//@Builder
 public class NotificationPojo {
-    private int id;
-    private String message;
+    public int id;
+    public String title;
+    public String message;
 }

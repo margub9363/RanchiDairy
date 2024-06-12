@@ -11,8 +11,19 @@ const customerSlice = createSlice({
   initialState: {
     loggedInUserDetail: {
       jwtToken: 1,
-      id: 1,
-      notificationMwssages: ["Test1", "Test2"],
+      id: 2,
+      notificationMwssages: [
+        {
+          id: 1,
+          title: "test",
+          message: "asd",
+        },
+        {
+          id: 6,
+          title: "qwe",
+          message: "sdfds",
+        },
+      ],
       name: "Tannu",
       ROLE: "CUSTOMER",
       contact_no: 9031790301,

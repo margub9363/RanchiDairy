@@ -6,8 +6,9 @@ const NotificatonCard = (message) => {
   return (
     <div style={{ margin: "5px" }}>
       <Card>
+        <Card.Header as="h5">{message.props.title}</Card.Header>
         <Card.Body>
-          <Card.Text>{message.props}</Card.Text>
+          <Card.Text>{message.props.message}</Card.Text>
           <Button variant="primary">Go somewhere</Button>
         </Card.Body>
       </Card>

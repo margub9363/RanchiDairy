@@ -1,6 +1,7 @@
 package com.ranchiDiary.RanchiDiaryBackend.controller;
 
 import com.ranchiDiary.RanchiDiaryBackend.pojo.CustomerRequestBody;
+import com.ranchiDiary.RanchiDiaryBackend.pojo.NotificationPojo;
 import com.ranchiDiary.RanchiDiaryBackend.service.CustomerService;
 import com.ranchiDiary.RanchiDiaryBackend.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,8 @@ public class Customer {
 
     @GetMapping("/getUnreadNotification/{customerId}")
 //    public List<String> getUnreadNotification (@PathVariable int customerId) {
-        public List<String> getUnreadNotification (@PathVariable int customerId) {
-        List<String> listOfUnReadMessagesForParticularCustomer = customerService.getListOfReadMessagesForParticularCustomer(customerId);
+        public List<NotificationPojo> getUnreadNotification (@PathVariable int customerId) {
+        List<NotificationPojo> listOfUnReadMessagesForParticularCustomer = customerService.getListOfReadMessagesForParticularCustomer(customerId);
         return listOfUnReadMessagesForParticularCustomer;
     }
 

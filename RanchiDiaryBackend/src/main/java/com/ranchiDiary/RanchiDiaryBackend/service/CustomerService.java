@@ -2,6 +2,7 @@ package com.ranchiDiary.RanchiDiaryBackend.service;
 
 import com.ranchiDiary.RanchiDiaryBackend.entity.Customer;
 import com.ranchiDiary.RanchiDiaryBackend.pojo.CustomerRequestBody;
+import com.ranchiDiary.RanchiDiaryBackend.pojo.NotificationPojo;
 import com.ranchiDiary.RanchiDiaryBackend.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,7 @@ public class CustomerService {
     }
 
 //    public List<Integer> getListOfReadMessagesForParticularCustomer(int id) {
-        public List<String> getListOfReadMessagesForParticularCustomer(int id) {
+        public List<NotificationPojo> getListOfReadMessagesForParticularCustomer(int id) {
 //            step1 -> get the customer registration date and list of notification Id's which he has read
         Optional<Customer> byId = customerRepository.findById(id);
         Date customerRegistrationDate = byId.get().registration_date;
@@ -62,8 +63,8 @@ public class CustomerService {
             System.out.println("----------------"+unreadNotificationIds);
 //            step4 -> from the given ID's fetch the notifications and provide as an output to the consumer.
             Collections.sort(unreadNotificationIds);
-            List<String> unreadMessages = notificationService.listOfNotificationMessagesForTheGiveIds(unreadNotificationIds);
-            return unreadMessages;
+             List<NotificationPojo> listOfNotificationPojos = notificationService.listOfNotificationPojoForTheGiveIds(unreadNotificationIds);
+            return listOfNotificationPojos;
         }
 
     public void markTheNotificationAsRead(int customerId,int notificationId) {
