@@ -32,7 +32,7 @@ const customerSlice = createSlice({
         },
       ],
       name: "Tannu",
-      ROLE: "CUSTOMER",
+      ROLE: "ADMIN",
       contact_no: 9031790301,
       due_amount: 123.456,
       address: "Ranchi Jharkhand Ranchi 834002",

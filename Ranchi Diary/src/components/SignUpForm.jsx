@@ -20,27 +20,20 @@ function SignUpForm() {
   }, [dispatch]);
 
   const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    setValidated(true);
+    event.preventDefault();
+    console.log(event);
   };
 
   return (
     <div style={{ margin: "10px" }}>
       <h1>Welcome To Ranchi Diary Sign Up Form</h1>
-
       Customer ID : <input value={nextAvailableID} />
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-
         <Row className="mb-3">
           <div>
             <Form.Group as={Col} md="4" controlId="validationCustom01">
-              <Form.Label>User Id</Form.Label>
-              <Form.Control required type="text" value="1" />
+              <Form.Label>Password</Form.Label>
+              <Form.Control required type="password" />
             </Form.Group>
           </div>
           <div>
