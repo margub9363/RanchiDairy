@@ -5,9 +5,24 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
 import "../css/Customer.css";
+// <<<<<<< FrontEndWork
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fectchSpecificCustomerInfo } from "../store";
+// =======
 import "./Profile.css";
+// >>>>>>> PreRelease_12thJune
 
 const Profile = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fectchSpecificCustomerInfo());
+  }, [dispatch]);
+
+  const customerDetailFromStore = useSelector((store) => store.customerReducer);
+  const customerDetails = customerDetailFromStore.customerProfile;
+  console.log(customerDetails);
+
   return (
     <div className="main-div">
       <div className="form-data">
@@ -58,13 +73,49 @@ const Profile = () => {
               md="4"
               controlId="validationCustom01"
             >
+// <<<<<<< FrontEndWork
+              <Form.Label>User Id</Form.Label>
+              <InputGroup hasValidation>
+                <InputGroup.Text id="inputGroupPrepend">CUS-</InputGroup.Text>
+                <Form.Control
+                  type="text"
+                  aria-describedby="inputGroupPrepend"
+                  value={customerDetails.id}
+                  required
+                />
+              </InputGroup>
+            </Form.Group>
+            <Form.Group as={Col} md="4" controlId="validationCustom01">
+              <Form.Label className="no-change">Name</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="First name"
+                value={customerDetails.name}
+              />
+            </Form.Group>
+            <Form.Group as={Col} md="4" controlId="validationCustom01">
+// =======
+// >>>>>>> PreRelease_12thJune
               <Form.Label className="no-change">Contact No</Form.Label>
               <Form.Control
                 required
                 type="text"
                 placeholder="First name"
-                defaultValue="9031700000"
+                value={customerDetails.contact_no}
               />
+// <<<<<<< FrontEndWork
+            </Form.Group>
+            <Form.Group as={Col} md="4" controlId="validationCustom01">
+              <Form.Label className="no-change">Address</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="First name"
+                value={customerDetails.address}
+              />
+            </Form.Group>
+// =======
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
           </Row>
@@ -111,6 +162,7 @@ const Profile = () => {
                 </Form.Control.Feedback>
               </Form.Group>
             </div>
+// >>>>>>> PreRelease_12thJune
           </Row>
         </Form>
       </div>

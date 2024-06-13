@@ -9,6 +9,13 @@ const saga = createSagaMiddleware();
 const customerSlice = createSlice({
   name: "customersListName",
   initialState: {
+    nextAvailableId: -1,
+    customerProfile: {
+      id: 0,
+      name: "Default",
+      contact_no: 0,
+      due_amount: 0.0,
+      address: "abc def xyz",
     loggedInUserDetail: {
       jwtToken: 1,
       role: "CUSTOMER",
@@ -31,6 +38,7 @@ const customerSlice = createSlice({
       due_amount: 123.456,
       address: "Ranchi Jharkhand Ranchi 834002",
       unreadNotifications: "0",
+
     },
     customerListArray: [
       {
@@ -112,6 +120,24 @@ const customerSlice = createSlice({
       console.log("*******markNotificationAsRead********");
       console.log(action);
     },
+
+    fectchSpecificCustomerInfo: (state, action) => {
+      console.log("******fectchSpecificCustomerInfo****");
+      state.isLoading = true;
+    },
+    getSpecificCustomerInfoSuccess: (state, action) => {
+      state.customerProfile = action.payload;
+      state.isLoading = false;
+    },
+    fetchNextAvailableID: (state) => {
+      console.log("********fetchNextAvailableID*********");
+      state.isLoading = true;
+    },
+    getNextAvailableIdSuccess: (state, action) => {
+      console.log("*******getNextAvailableIdSuccess*********");
+      state.nextAvailableId = action.payload;
+      state.isLoading = false;
+    },
   },
 });
 
@@ -132,6 +158,10 @@ export const {
   getPriceFetch,
   getpricesSuccess,
   udpatePrices,
+  fectchSpecificCustomerInfo,
+  getSpecificCustomerInfoSuccess,
+  fetchNextAvailableID,
+  getNextAvailableIdSuccess,
   loggingIn,
   updatingJwtAndRole,
   logoutFunctionality,

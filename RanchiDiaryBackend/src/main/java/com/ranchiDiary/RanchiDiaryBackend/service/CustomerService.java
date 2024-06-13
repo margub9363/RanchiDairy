@@ -39,6 +39,12 @@ public class CustomerService {
         return customersList;
     }
 
+
+    public long getNextAvailableId() {
+        long maxId = this.customerRepository.findMaxId();
+        return maxId = maxId + 1;
+    }
+
 //    public List<Integer> getListOfReadMessagesForParticularCustomer(int id) {
         public List<NotificationPojo> getListOfReadMessagesForParticularCustomer(int id) {
 //            step1 -> get the customer registration date and list of notification Id's which he has read
