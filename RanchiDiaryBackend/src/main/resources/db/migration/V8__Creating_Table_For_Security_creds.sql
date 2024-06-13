@@ -1,4 +1,4 @@
-CREATE TABLE `ranchidiarytesting5`.`app_user` (
+CREATE TABLE `ranchidiarytesting10`.`app_user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,

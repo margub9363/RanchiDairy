@@ -1,4 +1,4 @@
-CREATE TABLE `ranchidiarytesting7`.`customer` (
+CREATE TABLE `ranchidiarytesting10`.`customer` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `contact_no` INT(10) NOT NULL,
