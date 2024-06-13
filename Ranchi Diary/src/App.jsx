@@ -18,9 +18,10 @@ import AnimalFood from "./components/AnimalFood";
 import SignUpForm from "./components/SignUpForm";
 import LogInPage from "./components/LoginPage";
 import Price from "./components/Price";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getPriceFetch } from "./store";
+import NotificationWindow from "./components/Notifications";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,10 +29,18 @@ function App() {
     dispatch(getPriceFetch());
   }, [dispatch]);
 
+  const customerDetailFromStore = useSelector((store) => store.customerReducer);
+  const userDetails = customerDetailFromStore.loggedInUserDetail;
+  console.log(userDetails);
+
+  const disiplaySideBar = () => {
+    if (userDetails.jwtToken) <SideBar />;
+  };
+
   return (
     <>
       <div className="app-container">
-        <SideBar />
+        {userDetails.jwtToken != null ? <SideBar /> : <></>}
         <div className="content">
           <Header />
           <div className="homepage">
@@ -44,6 +53,10 @@ function App() {
               <Route path="/doctor" element={<Doctors />} />
               <Route path="/foodDeliviries" element={<FoodDeliviries />} />
               <Route path="/home" element={<HomePage />} />
+              <Route
+                path="/notificationWindow"
+                element={<NotificationWindow />}
+              />
               <Route path="/payment" element={<Payment />} />
               <Route path="/price" element={<Price />} />
               <Route path="/profile" element={<Profile />} />

@@ -3,10 +3,10 @@ import InputGroup from "react-bootstrap/InputGroup";
 const AnimalFood = () => {
   return (
     <>
-      <div>
-        <div>
+      <div style={{ margin: "5px" }}>
+        <div style={{ width: "50%" }}>
           <InputGroup size="sm" className="mb-3">
-            <InputGroup.Text id="inputGroup-sizing-sm">
+            <InputGroup.Text id="inputGroup-sizing-sm" style={{ width: "50%" }}>
               Vendor Id
             </InputGroup.Text>
             <Form.Control
@@ -15,14 +15,16 @@ const AnimalFood = () => {
             />
           </InputGroup>
           <InputGroup size="sm" className="mb-3">
-            <InputGroup.Text id="inputGroup-sizing-sm">Name</InputGroup.Text>
+            <InputGroup.Text id="inputGroup-sizing-sm" style={{ width: "50%" }}>
+              Name
+            </InputGroup.Text>
             <Form.Control
               aria-label="Small"
               aria-describedby="inputGroup-sizing-sm"
             />
           </InputGroup>
           <InputGroup size="sm" className="mb-3">
-            <InputGroup.Text id="inputGroup-sizing-sm">
+            <InputGroup.Text id="inputGroup-sizing-sm" style={{ width: "50%" }}>
               Payment Due More Than
             </InputGroup.Text>
             <Form.Control

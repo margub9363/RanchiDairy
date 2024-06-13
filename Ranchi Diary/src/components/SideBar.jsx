@@ -1,150 +1,64 @@
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 const SideBar = () => {
+  const customerDetailFromStore = useSelector((store) => store.customerReducer);
+  const userDetails = customerDetailFromStore.loggedInUserDetail;
+  console.log(userDetails);
+  const ROLE = userDetails.ROLE;
+  const customerNav = [
+    { diplayName: "Profile", navigation: "profile" },
+    { diplayName: "Dashboard", navigation: "dashboard" },
+    { diplayName: "Subscription", navigation: "subscription" },
+    { diplayName: "Notifications", navigation: "notificationWindow" },
+    // { diplayName: "Logout", navigation: "home" },
+  ];
+  const AdminNav = [
+    { diplayName: "Customers", navigation: "customers" },
+    { diplayName: "Update Price", navigation: "price" },
+    { diplayName: "Send Notifications", navigation: "sendNotification" },
+    { diplayName: "Doctor", navigation: "doctor" },
+    { diplayName: "Animal Food", navigation: "animalFood" },
+    { diplayName: "Waste Management", navigation: "tractor" },
+    // { diplayName: "Logout", navigation: "home" },
+  ];
+  const listItems = (navItems) => (
+    <>
+      <li>
+        <NavLink
+          to={navItems.navigation}
+          className="nav-link text-white"
+          aria-current="page"
+        >
+          <svg className="bi pe-none me-2" width="16" height="16">
+            <use xlinkHref="#people-circle"></use>
+          </svg>
+          {navItems.diplayName}
+        </NavLink>
+      </li>
+    </>
+  );
+
+  const displayNavItems = () => {
+    let navigatingElements = null;
+    if (ROLE === "ADMIN") navigatingElements = AdminNav;
+    else navigatingElements = customerNav;
+
+    return <>{navigatingElements.map((item) => listItems(item))}</>;
+  };
   return (
     <>
       <div
         className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
         style={{ width: "280px" }}
       >
-        <a
-          href="/"
-          className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
-        >
-          <svg className="bi pe-none me-2" width="40" height="32">
-            <use xlinkHref="#bootstrap"></use>
-          </svg>
-          <span className="fs-4">Rahman</span>
-        </a>
+        <span>
+          <svg className="bi pe-none me-2" width="40" height="32"></svg>
+          <span className="fs-4">{userDetails.name}</span>
+        </span>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
-          <li className="nav-item">
-            <NavLink
-              to="profile"
-              className="nav-link text-white"
-              aria-current="page"
-            >
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#home"></use>
-              </svg>
-              Profile
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="dashboard"
-              className="nav-link text-white"
-              aria-current="page"
-            >
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#home"></use>
-              </svg>
-              Dashboard
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="subscription"
-              className="nav-link text-white"
-              aria-current="page"
-            >
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#home"></use>
-              </svg>
-              Subscription
-            </NavLink>
-          </li>
-          {/* <li>
-            <NavLink
-              to="payment"
-              className="nav-link text-white"
-              aria-current="page"
-            >
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#home"></use>
-              </svg>
-              Payment
-            </NavLink>
-          </li>{" "} */}
-          <li>
-            <NavLink
-              to="customers"
-              className="nav-link text-white"
-              aria-current="page"
-            >
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#home"></use>
-              </svg>
-              Customers
-            </NavLink>
-          </li>{" "}
-          <li>
-            <NavLink
-              to="price"
-              className="nav-link text-white"
-              aria-current="page"
-            >
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#home"></use>
-              </svg>
-              Update Price
-            </NavLink>
-          </li>{" "}
-          <li>
-            <NavLink
-              to="sendNotification"
-              className="nav-link text-white"
-              aria-current="page"
-            >
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#home"></use>
-              </svg>
-              Send Notifications
-            </NavLink>
-          </li>{" "}
-          <li>
-            <NavLink
-              to="doctor"
-              className="nav-link text-white"
-              aria-current="page"
-            >
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#home"></use>
-              </svg>
-              Doctor
-            </NavLink>
-          </li>{" "}
-          <li>
-            <NavLink
-              to="animalFood"
-              className="nav-link text-white"
-              aria-current="page"
-            >
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#home"></use>
-              </svg>
-              Animal Food
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="tractor"
-              className="nav-link text-white"
-              aria-current="page"
-            >
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#home"></use>
-              </svg>
-              Waste Management
-            </NavLink>
-          </li>
-          <li>
-            <a href="#" className="nav-link text-white">
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#people-circle"></use>
-              </svg>
-              Logout
-            </a>
-          </li>
+          {displayNavItems()}
+          {}
         </ul>
         <hr />
         <div className="dropdown">
@@ -161,7 +75,7 @@ const SideBar = () => {
               height="32"
               className="rounded-circle me-2"
             />
-            <strong>Rahman</strong>
+            <strong>{userDetails.name}</strong>
           </a>
           <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
             <li>

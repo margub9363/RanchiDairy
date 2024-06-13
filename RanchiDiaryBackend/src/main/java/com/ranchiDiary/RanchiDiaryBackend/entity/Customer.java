@@ -3,6 +3,8 @@ package com.ranchiDiary.RanchiDiaryBackend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
+
 @Entity
 @Data
 @Getter
@@ -22,5 +24,7 @@ public class Customer {
     public float due_amount;
 //    blob picture;
     public String address;
+    public String notifications_read;
+    public Date registration_date;
 
 }

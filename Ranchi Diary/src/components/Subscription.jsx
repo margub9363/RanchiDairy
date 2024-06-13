@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Payment from "./Payment";
+import "./Subscription.css";
 const Subscription = () => {
   return (
     <>
@@ -54,7 +55,10 @@ const Subscription = () => {
           >
             Timing
           </span>
-          <div className="form-check form-check-inline subscription-timing-margin">
+          <div
+            style={{ margin: "10px" }}
+            className="form-check form-check-inline subscription-timing-margin"
+          >
             <input
               className="form-check-input subscription-timing-margin"
               type="checkbox"
@@ -65,7 +69,10 @@ const Subscription = () => {
               Morning 7:30 Am - 9:30 Am
             </label>
           </div>
-          <div className="form-check form-check-inline subscription-timing-margin">
+          <div
+            style={{ margin: "10px" }}
+            className="form-check form-check-inline subscription-timing-margin"
+          >
             <input
               className="form-check-input"
               type="checkbox"

@@ -12,7 +12,7 @@ function SendNotification() {
           style={{ height: "100px" }}
         />
       </FloatingLabel>
-      <Button variant="success" style={{ margin: "0px" }}>
+      <Button variant="success" style={{ marginTop: "7px" }}>
         Send Notification
       </Button>{" "}
     </div>
