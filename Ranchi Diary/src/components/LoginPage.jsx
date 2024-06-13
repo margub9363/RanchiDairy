@@ -18,10 +18,13 @@ const LogInPage = () => {
 
   return (
     <div style={{ marginTop: "20px" }}>
-      <form style={{ width: "25%", marginLeft: "30%" }} onSubmit={LogInPageHandler}>
+      <form
+        style={{ width: "25%", marginLeft: "30%" }}
+        onSubmit={LogInPageHandler}
+      >
         <img
           className="mb-4"
-          src="/docs/5.3/assets/brand/bootstrap-logo.svg"
+          src="./../public/LoginLogo.png"
           alt=""
           width="72"
           height="57"

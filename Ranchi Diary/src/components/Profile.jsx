@@ -24,6 +24,7 @@ const Profile = () => {
   console.log(customerDetails);
 
   return (
+    /*
     <div className="main-div">
       <div className="form-data">
         <Form
@@ -173,6 +174,8 @@ const Profile = () => {
         />
       </div>
     </div>
+    */
+    <>hello</>
   );
 };
 

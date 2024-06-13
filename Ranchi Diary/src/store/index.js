@@ -1,7 +1,5 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import customerSaga from "./customerSaga";
-import priceSaga from "./priceSaga";
 import rootSaga from "./rootSaga";
 
 const saga = createSagaMiddleware();
@@ -16,6 +14,7 @@ const customerSlice = createSlice({
       contact_no: 0,
       due_amount: 0.0,
       address: "abc def xyz",
+    },
     loggedInUserDetail: {
       jwtToken: 1,
       role: "CUSTOMER",
@@ -38,7 +37,6 @@ const customerSlice = createSlice({
       due_amount: 123.456,
       address: "Ranchi Jharkhand Ranchi 834002",
       unreadNotifications: "0",
-
     },
     customerListArray: [
       {

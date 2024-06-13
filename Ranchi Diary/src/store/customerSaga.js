@@ -8,7 +8,6 @@ import {
   getUnreadNotificationsFetch,
   getUnreadNotificationsSuccess,
 } from ".";
-// import { ADD_TO_CART, PRODUCT_LIST, SET_PRODUCT_LIST } from "./constant";
 
 function* getJwtTokenAndRole(data) {
   console.log(data.payload);
@@ -87,6 +86,7 @@ function* customerSaga() {
   yield takeEvery(
     "customersListName/fetchNextAvailableID",
     fetchNextAvailableIdForSignUp
+  );
   yield takeEvery("customersListName/loggingIn", getJwtTokenAndRole);
   yield takeEvery(
     "customersListName/getUnreadNotificationsFetch",
