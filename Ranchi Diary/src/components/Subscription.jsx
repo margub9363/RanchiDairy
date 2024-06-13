@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import Payment from "./Payment";
 import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import "./Subscription.css";
 const Subscription = () => {
   const pricesFromStore = useSelector((store) => store.customerReducer);
   const pricesAvailalbeInStore = pricesFromStore.prices;
@@ -79,7 +80,10 @@ const Subscription = () => {
           >
             Timing
           </span>
-          <div className="form-check form-check-inline subscription-timing-margin">
+          <div
+            style={{ margin: "10px" }}
+            className="form-check form-check-inline subscription-timing-margin"
+          >
             <input
               className="form-check-input subscription-timing-margin"
               type="checkbox"
@@ -90,7 +94,10 @@ const Subscription = () => {
               Morning 7:30 Am - 9:30 Am
             </label>
           </div>
-          <div className="form-check form-check-inline subscription-timing-margin">
+          <div
+            style={{ margin: "10px" }}
+            className="form-check form-check-inline subscription-timing-margin"
+          >
             <input
               className="form-check-input"
               type="checkbox"

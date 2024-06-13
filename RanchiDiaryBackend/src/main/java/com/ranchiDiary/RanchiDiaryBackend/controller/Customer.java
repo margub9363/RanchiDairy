@@ -1,7 +1,9 @@
 package com.ranchiDiary.RanchiDiaryBackend.controller;
 
 import com.ranchiDiary.RanchiDiaryBackend.pojo.CustomerRequestBody;
+import com.ranchiDiary.RanchiDiaryBackend.pojo.NotificationPojo;
 import com.ranchiDiary.RanchiDiaryBackend.service.CustomerService;
+import com.ranchiDiary.RanchiDiaryBackend.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,9 @@ public class Customer {
     @Autowired
     private CustomerService
             customerService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     @PostMapping("/insertCustomerRecord")
     public int insertCustomerRecord(@RequestBody CustomerRequestBody customerRequestBody){
@@ -38,5 +43,17 @@ public class Customer {
     public long getNextAvailableIdForSignUp() {
         long nextAvailableId = customerService.getNextAvailableId();
         return nextAvailableId;
+    }
+
+    @GetMapping("/getUnreadNotification/{customerId}")
+//    public List<String> getUnreadNotification (@PathVariable int customerId) {
+        public List<NotificationPojo> getUnreadNotification (@PathVariable int customerId) {
+        List<NotificationPojo> listOfUnReadMessagesForParticularCustomer = customerService.getListOfReadMessagesForParticularCustomer(customerId);
+        return listOfUnReadMessagesForParticularCustomer;
+    }
+
+    @GetMapping("/markNotificationRead/{customerId}/{notificationId}")
+    public void markNotificationAsRead(@PathVariable int customerId, @PathVariable int notificationId) {
+        customerService.markTheNotificationAsRead(customerId,notificationId);
     }
 }

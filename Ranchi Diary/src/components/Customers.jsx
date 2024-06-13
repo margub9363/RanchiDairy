@@ -14,25 +14,29 @@ const Customers = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div style={{ margin: "5px" }}>
       <h1>Customer Data</h1>
-      <div>
+      <div style={{ width: "50%" }}>
         <InputGroup size="sm" className="mb-3">
-          <InputGroup.Text id="inputGroup-sizing-sm">User Id</InputGroup.Text>
+          <InputGroup.Text id="inputGroup-sizing-sm" style={{ width: "50%" }}>
+            User Id
+          </InputGroup.Text>
           <Form.Control
             aria-label="Small"
             aria-describedby="inputGroup-sizing-sm"
           />
         </InputGroup>
         <InputGroup size="sm" className="mb-3">
-          <InputGroup.Text id="inputGroup-sizing-sm">Name</InputGroup.Text>
+          <InputGroup.Text id="inputGroup-sizing-sm" style={{ width: "50%" }}>
+            Name
+          </InputGroup.Text>
           <Form.Control
             aria-label="Small"
             aria-describedby="inputGroup-sizing-sm"
           />
         </InputGroup>
         <InputGroup size="sm" className="mb-3">
-          <InputGroup.Text id="inputGroup-sizing-sm">
+          <InputGroup.Text id="inputGroup-sizing-sm" style={{ width: "50%" }}>
             Payment Due More Than
           </InputGroup.Text>
           <Form.Control
@@ -68,7 +72,7 @@ const Customers = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 };
 
