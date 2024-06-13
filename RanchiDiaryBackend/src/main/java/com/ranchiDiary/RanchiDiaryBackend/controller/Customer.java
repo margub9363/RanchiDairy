@@ -39,7 +39,7 @@ public class Customer {
         return allCustomerList;
     }
 
-    @GetMapping("/nextID")
+    @GetMapping("/nextID") // this is not working
     public long getNextAvailableIdForSignUp() {
         long nextAvailableId = customerService.getNextAvailableId();
         return nextAvailableId;

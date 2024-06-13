@@ -25,6 +25,7 @@ public class CustomerService {
         customer.setName(customerRequestBody.getName());
         customer.setAddress(customerRequestBody.getAddress());
         customer.setContact_no(customerRequestBody.getNumber());
+        customer.setRegistration_date(new Date());
         Customer savedRecord = customerRepository.save(customer);
         return savedRecord.getId();
     }

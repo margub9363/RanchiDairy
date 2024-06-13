@@ -1,4 +1,4 @@
-CREATE TABLE `ranchidiarytesting10`.`tractor` (
+CREATE TABLE `ranchidiarytesting12`.`tractor` (
   `id` INT NOT NULL,
   `Name` VARCHAR(45) NOT NULL,
   `Date` DATE NOT NULL,

@@ -71,6 +71,49 @@ function* updateBackendThisNotificationIsRead(payload) {
   //   yield put({ type: SET_PRODUCT_LIST, data });
 }
 
+function* sendUserDataToRegister(payload) {
+  console.log("sendUserDataToRegister++++++++++");
+  console.log(payload);
+  try {
+    const registringCredStatus = yield call(
+      axios.post,
+      "http://localhost:8083/register",
+      payload.payload
+    );
+    const logginInWithNewCreds = yield call(
+      axios.post,
+      "http://localhost:8083/authenticate",
+      payload.payload
+    );
+    const currentUserJwtToken = logginInWithNewCreds.data.jwt;
+    console.log(currentUserJwtToken);
+
+    function apiCall(payload, currentUserJwtToken) {
+      axios.post(
+        "http://localhost:8083/customer/insertCustomerRecord",
+        payload.payload,
+        {
+          headers: {
+            Authorization: `Bearer ${currentUserJwtToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    }
+    const insertRecordInCustomerDb = yield call(
+      apiCall,
+      payload,
+      currentUserJwtToken
+    );
+    console.log(insertRecordInCustomerDb);
+  } catch (error) {
+    console.log("ERRR");
+    console.log(error);
+  }
+  // yield put(getUnreadNotificationsFetch(payload.payload.customerId));
+  //   yield put({ type: SET_PRODUCT_LIST, data });
+}
+
 function* testCart() {
   // let data
   console.log("++++++++Call api here -> test cart");
@@ -96,6 +139,8 @@ function* customerSaga() {
     "customersListName/markNotificationAsRead",
     updateBackendThisNotificationIsRead
   );
+
+  yield takeEvery("customersListName/getRegisterFetch", sendUserDataToRegister);
 
   //   yield takeEvery(ADD_TO_CART, testCart);
 }

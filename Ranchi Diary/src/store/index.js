@@ -32,7 +32,7 @@ const customerSlice = createSlice({
         },
       ],
       name: "Tannu",
-      ROLE: "ADMIN",
+      ROLE: "CUSTOMER",
       contact_no: 9031790301,
       due_amount: 123.456,
       address: "Ranchi Jharkhand Ranchi 834002",
@@ -136,6 +136,10 @@ const customerSlice = createSlice({
       state.nextAvailableId = action.payload;
       state.isLoading = false;
     },
+    getRegisterFetch: (state, action) => {
+      console.log("*******getRegisterFetch*********");
+      state.isLoading = true;
+    },
   },
 });
 
@@ -166,6 +170,7 @@ export const {
   getUnreadNotificationsFetch,
   getUnreadNotificationsSuccess,
   markNotificationAsRead,
+  getRegisterFetch,
 } = customerSlice.actions;
 
 export default ranchiDiaryStore;
