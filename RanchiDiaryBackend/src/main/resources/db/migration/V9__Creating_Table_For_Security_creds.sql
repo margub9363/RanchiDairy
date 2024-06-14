@@ -1,4 +1,4 @@
-CREATE TABLE `ranchidiarytesting12`.`app_user` (
+CREATE TABLE ${schemaName}.`app_user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
