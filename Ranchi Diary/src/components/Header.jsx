@@ -1,7 +1,20 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import SignUpForm from "./SignUpForm";
+import { logoutFunctionality } from "../store";
 
 const Header = () => {
+  const customerDetailFromStore = useSelector((store) => store.customerReducer);
+  const isLoggedIn = customerDetailFromStore.loggedInUserDetail.jwtToken;
+
+  // const isLoggedIn = "null";
+
+  const dispatch = useDispatch();
+
+  const logoutAndNullifyJWTToken = () => {
+    console.log("**********");
+    dispatch(logoutFunctionality());
+  };
+
   return (
     <>
       <header className="p-3 text-bg-dark">
@@ -58,26 +71,40 @@ const Header = () => {
             <form
               className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
               role="search"
-            >
-              <input
-                type="search"
-                className="form-control form-control-dark text-bg-dark"
-                placeholder="Search..."
-                aria-label="Search"
-              />
-            </form>
+            ></form>
 
             <div className="text-end">
-              <Link to={"/login"}>
-                <button type="button" className="btn btn-outline-light me-2">
-                  Login
-                </button>
-              </Link>
-              <Link to="/signUp">
-                <button type="button" className="btn btn-warning">
-                  Sign-up
-                </button>
-              </Link>
+              {isLoggedIn == null ? (
+                <Link to={"/login"}>
+                  <button type="button" className="btn btn-outline-light me-2">
+                    Login
+                  </button>
+                </Link>
+              ) : (
+                <></>
+              )}
+              {isLoggedIn == null ? (
+                <Link to="/signUp">
+                  <button type="button" className="btn btn-warning">
+                    Sign-up
+                  </button>
+                </Link>
+              ) : (
+                <></>
+              )}
+              {isLoggedIn != null ? (
+                <Link to={"/home"}>
+                  <button
+                    type="button"
+                    className="btn btn-outline-light me-2"
+                    onClick={logoutAndNullifyJWTToken}
+                  >
+                    Logout
+                  </button>
+                </Link>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </div>

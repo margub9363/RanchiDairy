@@ -1,13 +1,30 @@
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import { useDispatch } from "react-redux";
+import { loggingIn } from "../store";
 
 const LogInPage = () => {
+  const dispatch = useDispatch();
+
+  const LogInPageHandler = (e) => {
+    e.preventDefault();
+    // console.log(e.target[0].value);
+    const creds = {
+      username: e.target[0].value,
+      password: e.target[1].value,
+    };
+    dispatch(loggingIn(creds));
+  };
+
   return (
-    <>
-      <form>
+    <div style={{ marginTop: "20px" }}>
+      <form
+        style={{ width: "25%", marginLeft: "30%" }}
+        onSubmit={LogInPageHandler}
+      >
         <img
           className="mb-4"
-          src="/docs/5.3/assets/brand/bootstrap-logo.svg"
+          src="./../public/LoginLogo.png"
           alt=""
           width="72"
           height="57"
@@ -16,13 +33,13 @@ const LogInPage = () => {
 
         <div className="form-floating">
           <input
-            type="email"
+            type="text"
             className="form-control"
             id="floatingInput"
             placeholder="name@example.com"
             fdprocessedid="q4bea"
           />
-          <label htmlFor="floatingInput">Email address</label>
+          <label htmlFor="floatingInput">Customer ID</label>
         </div>
         <div className="form-floating">
           <input
@@ -53,12 +70,13 @@ const LogInPage = () => {
         >
           Sign in
         </button>
-        <p className="mt-5 mb-3 text-body-secondary">© 2017–2024</p>
       </form>
-      <Link to="/home">
-        <Button variant="danger">Cancel</Button>{" "}
+      <Link to="/home" style={{ margin: "30%" }}>
+        <Button variant="danger" style={{ width: "25%", marginTop: "10px" }}>
+          Cancel
+        </Button>{" "}
       </Link>
-    </>
+    </div>
   );
 };
 

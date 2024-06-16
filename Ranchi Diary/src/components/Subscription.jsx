@@ -1,6 +1,23 @@
 import Button from "react-bootstrap/Button";
 import Payment from "./Payment";
+import { useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import "./Subscription.css";
 const Subscription = () => {
+  const pricesFromStore = useSelector((store) => store.customerReducer);
+  const pricesAvailalbeInStore = pricesFromStore.prices;
+
+  let eggInputRef = useRef();
+  let milkInputRef = useRef();
+  let paneerInputRef = useRef();
+  let billedAmountRef = useRef();
+
+  const priceCalculatorHandler = (e) => {
+    billedAmountRef.current.value =
+      eggInputRef.current.value * pricesAvailalbeInStore.egg +
+      milkInputRef.current.value * pricesAvailalbeInStore.milk +
+      paneerInputRef.current.value * pricesAvailalbeInStore.paneer;
+  };
   return (
     <>
       <div>
@@ -12,10 +29,13 @@ const Subscription = () => {
             Egg
           </span>
           <input
-            type="text"
+            type="number"
             className="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-default"
+            defaultValue="0"
+            onChange={priceCalculatorHandler}
+            ref={eggInputRef}
           />
         </div>
         <div className="input-group mb-3">
@@ -26,10 +46,13 @@ const Subscription = () => {
             Paneer
           </span>
           <input
-            type="text"
+            type="number"
             className="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-default"
+            defaultValue="0"
+            onChange={priceCalculatorHandler}
+            ref={paneerInputRef}
           />
         </div>
         <div className="input-group mb-3">
@@ -40,10 +63,13 @@ const Subscription = () => {
             Milk
           </span>
           <input
-            type="text"
+            type="number"
             className="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-default"
+            defaultValue="0"
+            onChange={priceCalculatorHandler}
+            ref={milkInputRef}
           />
         </div>
         {/*  */}
@@ -54,7 +80,10 @@ const Subscription = () => {
           >
             Timing
           </span>
-          <div className="form-check form-check-inline subscription-timing-margin">
+          <div
+            style={{ margin: "10px" }}
+            className="form-check form-check-inline subscription-timing-margin"
+          >
             <input
               className="form-check-input subscription-timing-margin"
               type="checkbox"
@@ -65,7 +94,10 @@ const Subscription = () => {
               Morning 7:30 Am - 9:30 Am
             </label>
           </div>
-          <div className="form-check form-check-inline subscription-timing-margin">
+          <div
+            style={{ margin: "10px" }}
+            className="form-check form-check-inline subscription-timing-margin"
+          >
             <input
               className="form-check-input"
               type="checkbox"
@@ -85,10 +117,12 @@ const Subscription = () => {
             Bill Amount
           </span>
           <input
-            type="text"
+            type="number"
             className="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-default"
+            // value={billedAmount.egg}
+            ref={billedAmountRef}
           />
         </div>
         <Button variant="success">Submit</Button>{" "}

@@ -3,11 +3,11 @@ import InputGroup from "react-bootstrap/InputGroup";
 
 const Doctors = () => {
   return (
-    <>
+    <div style={{ margin: "5px" }}>
       <h1>Doctors Visit Details</h1>
-      <div>
+      <div style={{ width: "50%" }}>
         <InputGroup size="sm" className="mb-3">
-          <InputGroup.Text id="inputGroup-sizing-sm">
+          <InputGroup.Text id="inputGroup-sizing-sm" style={{ width: "50%" }}>
             Doctors Id
           </InputGroup.Text>
           <Form.Control
@@ -16,14 +16,16 @@ const Doctors = () => {
           />
         </InputGroup>
         <InputGroup size="sm" className="mb-3">
-          <InputGroup.Text id="inputGroup-sizing-sm">Name</InputGroup.Text>
+          <InputGroup.Text id="inputGroup-sizing-sm" style={{ width: "50%" }}>
+            Name
+          </InputGroup.Text>
           <Form.Control
             aria-label="Small"
             aria-describedby="inputGroup-sizing-sm"
           />
         </InputGroup>
         <InputGroup size="sm" className="mb-3">
-          <InputGroup.Text id="inputGroup-sizing-sm">
+          <InputGroup.Text id="inputGroup-sizing-sm" style={{ width: "50%" }}>
             Payment Due More Than
           </InputGroup.Text>
           <Form.Control
@@ -68,7 +70,7 @@ const Doctors = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 };
 

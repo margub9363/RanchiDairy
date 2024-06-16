@@ -1,0 +1,6 @@
+ALTER TABLE ${schemaName}.`customer`
+ADD COLUMN `registration_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL;
+
+ALTER TABLE ${schemaName}.`notifications`
+ADD COLUMN `notification_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL;
+
