@@ -40,7 +40,7 @@ const Profile = () => {
                   <InputGroup.Text id="inputGroupPrepend">Cus-</InputGroup.Text>
                   <Form.Control
                     type="text"
-                    placeholder="Username"
+                    value={customerDetails.id}
                     aria-describedby="inputGroupPrepend"
                     required
                   />
@@ -58,7 +58,7 @@ const Profile = () => {
                 <Form.Control
                   required
                   type="text"
-                  placeholder="First name"
+                  value={customerDetails.name}
                   defaultValue="Mark"
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -74,8 +74,7 @@ const Profile = () => {
               <Form.Control
                 required
                 type="text"
-                placeholder="First name"
-                defaultValue="9031700000"
+                value={customerDetails.contact_no}
               />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
@@ -88,11 +87,8 @@ const Profile = () => {
                 md="6"
                 controlId="validationCustom03"
               >
-                <Form.Label>City</Form.Label>
-                <Form.Control type="text" placeholder="City" required />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid city.
-                </Form.Control.Feedback>
+                <Form.Label>Address</Form.Label>
+                <Form.Control type="text" value={customerDetails.address} />
               </Form.Group>
             </div>
             <div>
@@ -102,25 +98,11 @@ const Profile = () => {
                 md="3"
                 controlId="validationCustom04"
               >
-                <Form.Label>State</Form.Label>
-                <Form.Control type="text" placeholder="State" required />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid state.
-                </Form.Control.Feedback>
-              </Form.Group>
-            </div>
-            <div>
-              <Form.Group
-                as={Col}
-                md="3"
-                style={{ width: "80%" }}
-                controlId="validationCustom05"
-              >
-                <Form.Label>Zip</Form.Label>
-                <Form.Control type="text" placeholder="Zip" required />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid zip.
-                </Form.Control.Feedback>
+                <Form.Label>Registration Date</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={customerDetails.registration_date}
+                />
               </Form.Group>
             </div>
           </Row>

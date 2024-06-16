@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 const SideBar = () => {
   const customerDetailFromStore = useSelector((store) => store.customerReducer);
-  const userDetails = customerDetailFromStore.loggedInUserDetail;
+  const userDetails = customerDetailFromStore.customerProfile;
   console.log(userDetails);
   const ROLE = userDetails.ROLE;
   const customerNav = [
