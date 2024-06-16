@@ -33,6 +33,12 @@ public class Customer {
         return customer;
     }
 
+    @GetMapping("/getCustomerRecordByUserName/{userName}")
+    public Optional<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> getCustomerDetail(@PathVariable("userName") String userName){
+        Optional<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> customer = customerService.getCustomerDetailByUserName(userName);
+        return customer;
+    }
+
     @GetMapping("/getAllCustomers")
     public List<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> getAllCustomersList() {
         List<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> allCustomerList = customerService.getAllCustomerList();

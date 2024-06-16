@@ -15,9 +15,9 @@ function SignUpForm() {
   const nextAvailableID = customerDetailFromStore.nextAvailableId;
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchNextAvailableID());
-  }, [dispatch]);
+  // useEffect(() => { // we dont need nexxt available id for now
+  //   dispatch(fetchNextAvailableID());
+  // }, [dispatch]);
 
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -7,6 +7,8 @@ import {
   updatingJwtAndRole,
   getUnreadNotificationsFetch,
   getUnreadNotificationsSuccess,
+  updateCustomerInfoAfterLoggin,
+  getCustomerDataFetch,
 } from ".";
 
 function* getJwtTokenAndRole(data) {
@@ -17,7 +19,12 @@ function* getJwtTokenAndRole(data) {
     data.payload
   );
   console.log(output.data);
+  const dataForGettingCustomerInfo = {
+    currentUserJwtToken: output.data.jwt,
+    username: data.payload.username,
+  };
   yield put(updatingJwtAndRole(output.data));
+  yield put(getCustomerDataFetch(dataForGettingCustomerInfo));
 }
 
 function* getAllCustomers() {
@@ -114,6 +121,29 @@ function* sendUserDataToRegister(payload) {
   //   yield put({ type: SET_PRODUCT_LIST, data });
 }
 
+function* getCustomerDataWithUserId(payload) {
+  console.log("++++++++++++payload+++++");
+  const currentUserJwtToken = payload.payload.currentUserJwtToken;
+  const userName = payload.payload.username;
+
+  const fetchUser = async (userName, currentUserJwtToken) => {
+    const response = await axios.get(
+      `http://localhost:8083/customer/getCustomerRecordByUserName/${userName}`,
+      // payload.payload,
+      {
+        headers: {
+          Authorization: `Bearer ${currentUserJwtToken}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  };
+  const user = yield call(fetchUser, userName, currentUserJwtToken);
+  console.log(user);
+  yield put(updateCustomerInfoAfterLoggin(user));
+}
+
 function* testCart() {
   // let data
   console.log("++++++++Call api here -> test cart");
@@ -141,7 +171,10 @@ function* customerSaga() {
   );
 
   yield takeEvery("customersListName/getRegisterFetch", sendUserDataToRegister);
-
+  yield takeEvery(
+    "customersListName/getCustomerDataFetch",
+    getCustomerDataWithUserId
+  );
   //   yield takeEvery(ADD_TO_CART, testCart);
 }
 

@@ -10,6 +10,7 @@ public class CustomerRequestBody {
     public long number;
     public float dueAmount;
     public String address;
+    public String username;
 /*
     public String getAddress() {
         return address;

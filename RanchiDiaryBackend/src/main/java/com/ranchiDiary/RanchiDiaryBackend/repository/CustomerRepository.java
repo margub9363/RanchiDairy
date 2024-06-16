@@ -11,4 +11,6 @@ public interface CustomerRepository extends JpaRepository <Customer,Integer> {
     @Query("SELECT MAX(c.id) FROM Customer c")
     Long findMaxId();
 
+
+    Customer findByUsername(String userName);
 }

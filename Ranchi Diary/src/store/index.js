@@ -14,9 +14,12 @@ const customerSlice = createSlice({
       contact_no: 0,
       due_amount: 0.0,
       address: "abc def xyz",
+      registration_date: "2020-01-01T05:59:52.000+00:00",
+      notifications_read: "1 2 3",
+      username: "default",
     },
     loggedInUserDetail: {
-      jwtToken: 1,
+      jwtToken: null,
       role: "CUSTOMER",
       id: 2,
       notificationMwssages: [
@@ -31,11 +34,11 @@ const customerSlice = createSlice({
           message: "sdfds",
         },
       ],
-      name: "Tannu",
+      name: "Dummy",
       ROLE: "CUSTOMER",
-      contact_no: 9031790301,
+      contact_no: 0,
       due_amount: 123.456,
-      address: "Ranchi Jharkhand Ranchi 834002",
+      address: "Dummy",
       unreadNotifications: "0",
     },
     customerListArray: [
@@ -101,8 +104,8 @@ const customerSlice = createSlice({
     },
     updatingJwtAndRole: (state, action) => {
       console.log(action);
-      state.loggedInUser = action.payload;
-      console.log(state.loggedInUser.jwt);
+      state.loggedInUserDetail.jwtToken = action.payload.jwt;
+      state.loggedInUserDetail.role = action.payload.role;
     },
     logoutFunctionality: (state, action) => {
       state.loggedInUserDetail.jwtToken = null;
@@ -140,6 +143,21 @@ const customerSlice = createSlice({
       console.log("*******getRegisterFetch*********");
       state.isLoading = true;
     },
+    getCustomerDataFetch: (state, action) => {
+      console.log("*******getCustomerDataFetch********");
+    },
+    updateCustomerInfoAfterLoggin(state, action) {
+      console.log("*******updateCustomerInfoAfterLoggin*********");
+      console.log(action);
+      state.customerProfile.id = action.payload.id;
+      state.customerProfile.name = action.payload.name;
+      state.customerProfile.address = action.payload.address;
+      state.customerProfile.contact_no = action.payload.contact_no;
+      state.customerProfile.due_amount = action.payload.due_amount;
+      state.customerProfile.registration_date =
+        action.payload.registration_date;
+      state.customerProfile.username = action.payload.username;
+    },
   },
 });
 
@@ -171,6 +189,8 @@ export const {
   getUnreadNotificationsSuccess,
   markNotificationAsRead,
   getRegisterFetch,
+  getCustomerDataFetch,
+  updateCustomerInfoAfterLoggin,
 } = customerSlice.actions;
 
 export default ranchiDiaryStore;

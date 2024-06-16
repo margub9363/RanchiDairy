@@ -5,6 +5,9 @@ import { logoutFunctionality } from "../store";
 const Header = () => {
   const customerDetailFromStore = useSelector((store) => store.customerReducer);
   const isLoggedIn = customerDetailFromStore.loggedInUserDetail.jwtToken;
+
+  // const isLoggedIn = "null";
+
   const dispatch = useDispatch();
 
   const logoutAndNullifyJWTToken = () => {

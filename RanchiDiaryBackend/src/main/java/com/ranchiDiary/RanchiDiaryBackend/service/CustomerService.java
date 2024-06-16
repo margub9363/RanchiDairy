@@ -22,6 +22,7 @@ public class CustomerService {
 
     public int saveCustomerDataInDatabase(CustomerRequestBody customerRequestBody){
         Customer customer = Customer.builder().build();
+        customer.setUsername(customerRequestBody.getUsername());
         customer.setName(customerRequestBody.getName());
         customer.setAddress(customerRequestBody.getAddress());
         customer.setContact_no(customerRequestBody.getNumber());
@@ -86,5 +87,10 @@ public class CustomerService {
         else notificationsRead = ""+notificationId;
         c.setNotifications_read(notificationsRead);
         customerRepository.save(c);
+    }
+
+    public Optional<Customer> getCustomerDetailByUserName(String  userName) {
+        Customer byUsername = customerRepository.findByUsername(userName);
+        return Optional.ofNullable(byUsername);
     }
 }
