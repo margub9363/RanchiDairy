@@ -3,14 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 const SideBar = () => {
   const customerDetailFromStore = useSelector((store) => store.customerReducer);
   const userDetails = customerDetailFromStore.customerProfile;
-  console.log(userDetails);
-  const ROLE = userDetails.ROLE;
+  const ROLE = customerDetailFromStore.loggedInUserDetail.role;
+
   const customerNav = [
     { diplayName: "Profile", navigation: "profile" },
     { diplayName: "Dashboard", navigation: "dashboard" },
     { diplayName: "Subscription", navigation: "subscription" },
     { diplayName: "Notifications", navigation: "notificationWindow" },
-    // { diplayName: "Logout", navigation: "home" },
   ];
   const AdminNav = [
     { diplayName: "Customers", navigation: "customers" },
@@ -19,7 +18,6 @@ const SideBar = () => {
     { diplayName: "Doctor", navigation: "doctor" },
     { diplayName: "Animal Food", navigation: "animalFood" },
     { diplayName: "Waste Management", navigation: "tractor" },
-    // { diplayName: "Logout", navigation: "home" },
   ];
   const listItems = (navItems) => (
     <>

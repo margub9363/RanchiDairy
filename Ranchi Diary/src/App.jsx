@@ -24,14 +24,14 @@ import { getPriceFetch } from "./store";
 import NotificationWindow from "./components/Notifications";
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getPriceFetch());
-  }, [dispatch]);
-
   const customerDetailFromStore = useSelector((store) => store.customerReducer);
   const userDetails = customerDetailFromStore.loggedInUserDetail;
-  console.log(userDetails);
+  // console.log(userDetails);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPriceFetch(userDetails.jwtToken));
+  }, [dispatch]);
 
   const disiplaySideBar = () => {
     if (userDetails.jwtToken) <SideBar />;

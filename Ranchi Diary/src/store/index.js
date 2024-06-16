@@ -86,7 +86,7 @@ const customerSlice = createSlice({
     getCustomersListFailure: (state) => {
       state.isLoading = false;
     },
-    getPriceFetch: (state) => {
+    getPriceFetch: (state, payload) => {
       state.isLoading = true;
       console.log("*******getPriceFetch********");
     },
@@ -100,10 +100,10 @@ const customerSlice = createSlice({
       console.log(action);
     },
     loggingIn: (state, action) => {
-      console.log(action);
+      // console.log(action);
     },
     updatingJwtAndRole: (state, action) => {
-      console.log(action);
+      // console.log(action);
       state.loggedInUserDetail.jwtToken = action.payload.jwt;
       state.loggedInUserDetail.role = action.payload.role;
     },
@@ -148,7 +148,7 @@ const customerSlice = createSlice({
     },
     updateCustomerInfoAfterLoggin(state, action) {
       console.log("*******updateCustomerInfoAfterLoggin*********");
-      console.log(action);
+      // console.log(action);
       state.customerProfile.id = action.payload.id;
       state.customerProfile.name = action.payload.name;
       state.customerProfile.address = action.payload.address;

@@ -12,13 +12,13 @@ import {
 } from ".";
 
 function* getJwtTokenAndRole(data) {
-  console.log(data.payload);
+  // console.log(data.payload);
   const output = yield call(
     axios.post,
     "http://localhost:8083/authenticate",
     data.payload
   );
-  console.log(output.data);
+  // console.log(output.data);
   const dataForGettingCustomerInfo = {
     currentUserJwtToken: output.data.jwt,
     username: data.payload.username,
@@ -62,7 +62,7 @@ function* getUnreadNotifications(customerId) {
   );
   const formattedData = yield data.json();
   console.log("------------");
-  console.log(formattedData);
+  // console.log(formattedData);
   yield put(getUnreadNotificationsSuccess(formattedData));
   //   yield put({ type: SET_PRODUCT_LIST, data });
 }
@@ -80,7 +80,7 @@ function* updateBackendThisNotificationIsRead(payload) {
 
 function* sendUserDataToRegister(payload) {
   console.log("sendUserDataToRegister++++++++++");
-  console.log(payload);
+  // console.log(payload);
   try {
     const registringCredStatus = yield call(
       axios.post,
@@ -93,7 +93,7 @@ function* sendUserDataToRegister(payload) {
       payload.payload
     );
     const currentUserJwtToken = logginInWithNewCreds.data.jwt;
-    console.log(currentUserJwtToken);
+    // console.log(currentUserJwtToken);
 
     function apiCall(payload, currentUserJwtToken) {
       axios.post(
@@ -112,10 +112,10 @@ function* sendUserDataToRegister(payload) {
       payload,
       currentUserJwtToken
     );
-    console.log(insertRecordInCustomerDb);
+    // console.log(insertRecordInCustomerDb);
   } catch (error) {
     console.log("ERRR");
-    console.log(error);
+    // console.log(error);
   }
   // yield put(getUnreadNotificationsFetch(payload.payload.customerId));
   //   yield put({ type: SET_PRODUCT_LIST, data });
@@ -140,7 +140,7 @@ function* getCustomerDataWithUserId(payload) {
     return response.data;
   };
   const user = yield call(fetchUser, userName, currentUserJwtToken);
-  console.log(user);
+  // console.log(user);
   yield put(updateCustomerInfoAfterLoggin(user));
 }
 
