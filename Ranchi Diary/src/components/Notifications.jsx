@@ -4,30 +4,36 @@ import { getUnreadNotificationsFetch } from "../store";
 import { useEffect } from "react";
 
 const NotificationWindow = () => {
-  const customerId = useSelector(
-    (store) => store.customerReducer.loggedInUserDetail.id
+  const userName = useSelector(
+    (store) => store.customerReducer.customerProfile.username
   );
   const unReadNotificationMessages = useSelector(
-    (store) => store.customerReducer.loggedInUserDetail.notificationMwssages
+    (store) => store.customerReducer.customerProfile.notificationMessages
+  );
+
+  const jwtToken = useSelector(
+    (store) => store.customerReducer.loggedInUserDetail.jwtToken
   );
 
   const dispatch = useDispatch();
-  //   dispatch(getUnreadNotificationsFetch(customerid));
+  const notficationPayload = {
+    userName: userName,
+    jwtToken: jwtToken,
+  };
   useEffect(() => {
-    dispatch(getUnreadNotificationsFetch(customerId));
+    dispatch(getUnreadNotificationsFetch(notficationPayload));
   }, []);
-
-  console.log("unReadNotificationMessages++++++++++++");
-  console.log(unReadNotificationMessages);
 
   return (
     <>
       This pages will show the unread notifications.
       {unReadNotificationMessages.map((message) => (
         <NotificatonCard
-          message={message}
-          customerId={customerId}
+          message={message.message}
+          title={message.title}
           key={message.id}
+          id={message.id}
+          userName={userName}
         />
       ))}
     </>

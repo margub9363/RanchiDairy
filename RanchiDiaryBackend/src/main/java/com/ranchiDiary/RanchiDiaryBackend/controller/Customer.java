@@ -58,8 +58,20 @@ public class Customer {
         return listOfUnReadMessagesForParticularCustomer;
     }
 
+    @GetMapping("/getUnreadNotificationByUserName/{userName}")
+//    public List<String> getUnreadNotification (@PathVariable int customerId) {
+    public List<NotificationPojo> getUnreadNotification (@PathVariable String userName) {
+        List<NotificationPojo> listOfUnReadMessagesForParticularCustomer = customerService.getListOfReadMessagesForParticularCustomerByUserName(userName);
+        return listOfUnReadMessagesForParticularCustomer;
+    }
+
     @GetMapping("/markNotificationRead/{customerId}/{notificationId}")
     public void markNotificationAsRead(@PathVariable int customerId, @PathVariable int notificationId) {
         customerService.markTheNotificationAsRead(customerId,notificationId);
+    }
+
+    @GetMapping("/markNotificationReadWithUserName/{userName}/{notificationId}")
+    public void markNotificationReadWithUserName(@PathVariable String userName, @PathVariable int notificationId) {
+        customerService.markTheNotificationAsReadByUserName(userName,notificationId);
     }
 }

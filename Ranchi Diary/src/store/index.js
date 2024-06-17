@@ -17,12 +17,7 @@ const customerSlice = createSlice({
       registration_date: "2020-01-01T05:59:52.000+00:00",
       notifications_read: "1 2 3",
       username: "default",
-    },
-    loggedInUserDetail: {
-      jwtToken: null,
-      role: "CUSTOMER",
-      id: 2,
-      notificationMwssages: [
+      notificationMessages: [
         {
           id: 1,
           title: "test",
@@ -34,12 +29,12 @@ const customerSlice = createSlice({
           message: "sdfds",
         },
       ],
-      name: "Dummy",
-      ROLE: "CUSTOMER",
-      contact_no: 0,
-      due_amount: 123.456,
-      address: "Dummy",
       unreadNotifications: "0",
+    },
+    loggedInUserDetail: {
+      jwtToken: null,
+      role: "CUSTOMER",
+      id: 2,
     },
     customerListArray: [
       {
@@ -52,13 +47,6 @@ const customerSlice = createSlice({
       {
         id: 2,
         name: "initial 1",
-        address: "initial address",
-        contactNo: 12345,
-        dueAmount: 12.345,
-      },
-      {
-        id: 3,
-        name: "initial 2",
         address: "initial address",
         contactNo: 12345,
         dueAmount: 12.345,
@@ -112,10 +100,11 @@ const customerSlice = createSlice({
     },
     getUnreadNotificationsFetch: (state, action) => {
       state.isLoading = true;
-      console.log("*******getUnreadNotifications********");
+      console.log("*******getUnreadNotificationsFetch********");
+      console.log(action);
     },
     getUnreadNotificationsSuccess: (state, action) => {
-      state.loggedInUserDetail.notificationMwssages = action.payload;
+      state.customerProfile.notificationMessages = action.payload;
     },
     markNotificationAsRead: (state, action) => {
       console.log("*******markNotificationAsRead********");

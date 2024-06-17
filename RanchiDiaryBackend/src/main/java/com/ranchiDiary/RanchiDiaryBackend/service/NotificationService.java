@@ -22,8 +22,13 @@ public class NotificationService {
     @Autowired
     private NotificationEntityToNotificationJsonConverter notificationEntityToNotificationJsonConverter;
 
-    public void updateNotificationInDb(String message) {
-        notificationRepository.save(new Notification().builder().message(message).build());
+    public void updateNotificationInDb(NotificationPojo requestBody) {
+        Notification notification = Notification.builder()
+                .Title(requestBody.getTitle())
+                .message(requestBody.getMessage())
+                .notificationDate(new Date())
+                .build();
+        notificationRepository.save(notification);
     }
     public java.util.Optional<Notification> firstNotification() {
         return notificationRepository.findById(1);

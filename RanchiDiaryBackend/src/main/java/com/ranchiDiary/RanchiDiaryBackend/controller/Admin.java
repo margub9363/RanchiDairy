@@ -15,6 +15,6 @@ public class Admin {
 
     @PostMapping("/sendNotification")
     public void sendNotifications(@RequestBody NotificationPojo request) {
-        notificationService.updateNotificationInDb(request.getMessage());
+        notificationService.updateNotificationInDb(request);
     }
 }

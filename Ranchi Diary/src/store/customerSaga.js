@@ -53,22 +53,35 @@ function* fetchNextAvailableIdForSignUp() {
   yield put(getNextAvailableIdSuccess(formattedData));
 }
 
-function* getUnreadNotifications(customerId) {
+function* getUnreadNotifications(payload) {
   console.log("getUnreadNotifications++++++++++");
-  const data = yield call(() =>
-    fetch(
-      `http://localhost:8083/customer/getUnreadNotification/${customerId.payload}`
-    )
+  console.log(payload);
+  const unReadNotificationsApiCall = async (jwtToken, customerUserName) => {
+    const response = await axios.get(
+      `http://localhost:8083/customer/getUnreadNotificationByUserName/${customerUserName}`,
+      // payload.payload,
+      {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  };
+  const unReadNotifications = yield call(
+    unReadNotificationsApiCall,
+    payload.payload.jwtToken,
+    payload.payload.userName
   );
-  const formattedData = yield data.json();
-  console.log("------------");
-  // console.log(formattedData);
-  yield put(getUnreadNotificationsSuccess(formattedData));
+  yield put(getUnreadNotificationsSuccess(unReadNotifications));
   //   yield put({ type: SET_PRODUCT_LIST, data });
 }
 
 function* updateBackendThisNotificationIsRead(payload) {
-  console.log("updateBackendThatThisNotificationIsRead++++++++++");
+  console.log("updateBackendThisNotificationIsRead++++++++++");
+  console.log(payload);
+  /*
   const data = yield call(() =>
     fetch(
       `http://localhost:8083/customer/markNotificationRead/${payload.payload.customerId}/${payload.payload.notificationId}`
@@ -76,6 +89,35 @@ function* updateBackendThisNotificationIsRead(payload) {
   );
   yield put(getUnreadNotificationsFetch(payload.payload.customerId));
   //   yield put({ type: SET_PRODUCT_LIST, data });
+  */
+  const updateBackendForReadNotifications = async (
+    jwtToken,
+    userName,
+    notificationId
+  ) => {
+    const response = await axios.get(
+      `http://localhost:8083/customer/markNotificationReadWithUserName/${userName}/${notificationId}`,
+      // payload.payload,
+      {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  };
+  const unReadNotifications = yield call(
+    updateBackendForReadNotifications,
+    payload.payload.jwtToken,
+    payload.payload.userName,
+    payload.payload.notificationId
+  );
+  const notficationPayload = {
+    userName: payload.payload.userName,
+    jwtToken: payload.payload.jwtToken,
+  };
+  yield put(getUnreadNotificationsFetch(notficationPayload));
 }
 
 function* sendUserDataToRegister(payload) {
@@ -175,6 +217,7 @@ function* customerSaga() {
     "customersListName/getCustomerDataFetch",
     getCustomerDataWithUserId
   );
+
   //   yield takeEvery(ADD_TO_CART, testCart);
 }
 

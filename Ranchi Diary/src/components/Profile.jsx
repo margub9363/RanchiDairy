@@ -13,9 +13,9 @@ import "./Profile.css";
 
 const Profile = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fectchSpecificCustomerInfo());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fectchSpecificCustomerInfo());
+  // }, [dispatch]);
 
   const customerDetailFromStore = useSelector((store) => store.customerReducer);
   const customerDetails = customerDetailFromStore.customerProfile;
