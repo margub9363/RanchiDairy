@@ -1,0 +1,19 @@
+.image-decoration {
+  height: 200px;
+  border-radius: 100px;
+}
+
+.profile-background-color {
+  background-color: green;
+  display: flex;
+}
+
+.form-data {
+  /* background-color: red; */
+  width: 40%;
+}
+
+.main-div {
+  margin: 10px;
+  display: flex;
+}

@@ -1,0 +1,52 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.0'
+	id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'com.ranchiDiary'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+//dependencies {
+//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//	implementation 'org.springframework.boot:spring-boot-starter-web'
+////	implementation 'org.flywaydb:flyway-core'
+////	implementation 'org.flywaydb:flyway-sqlserver'
+//	implementation 'com.microsoft.sqlserver:mssql-jdbc'
+//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+////	implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.13'
+//	runtimeOnly 'mysql:mysql-connector-java'
+//}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.flywaydb:flyway-core'
+	implementation 'org.flywaydb:flyway-mysql'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+//	for jwt
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

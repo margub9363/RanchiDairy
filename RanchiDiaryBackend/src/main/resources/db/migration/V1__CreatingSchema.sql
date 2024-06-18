@@ -1,0 +1,1 @@
+--CREATE SCHEMA ${schemaName} ; this idea will not work because we require schema name in the db url to connect.
