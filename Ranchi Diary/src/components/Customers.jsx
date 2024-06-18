@@ -8,9 +8,12 @@ const Customers = () => {
   const customerDetailFromStore = useSelector((store) => store.customerReducer);
   const customerListArray = customerDetailFromStore.customerListArray;
 
+  const jwtToken = useSelector(
+    (store) => store.customerReducer.loggedInUserDetail.jwtToken
+  );
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCustomersListFetch());
+    dispatch(getCustomersListFetch(jwtToken));
   }, [dispatch]);
 
   return (

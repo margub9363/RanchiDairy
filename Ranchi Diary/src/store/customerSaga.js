@@ -27,13 +27,24 @@ function* getJwtTokenAndRole(data) {
   yield put(getCustomerDataFetch(dataForGettingCustomerInfo));
 }
 
-function* getAllCustomers() {
+function* getAllCustomers(payload) {
   console.log("+++++++getAllCustomers++++++++++");
-  const data = yield call(() =>
-    fetch("http://localhost:8083/customer/getAllCustomers")
-  );
-  const formattedData = yield data.json();
-  yield put(getCustomersListSuccess(formattedData));
+  console.log(payload);
+  const getCustomerListApiCall = async (jwtToken) => {
+    const response = await axios.get(
+      `http://localhost:8083/customer/getAllCustomers`,
+      // payload.payload,
+      {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  };
+  const listOfCustomers = yield call(getCustomerListApiCall, payload.payload);
+  yield put(getCustomersListSuccess(listOfCustomers));
 }
 
 function* getCustomerInfoViaBackend() {
