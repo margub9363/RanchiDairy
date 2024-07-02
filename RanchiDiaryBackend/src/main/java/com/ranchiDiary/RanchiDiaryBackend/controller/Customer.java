@@ -45,6 +45,16 @@ public class Customer {
         return allCustomerList;
     }
 
+    @GetMapping("/getAllCustomersAsPerPagination")
+    public List<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> getAllCustomersList(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "name") String sortBy
+    ) {
+        List<com.ranchiDiary.RanchiDiaryBackend.entity.Customer> allCustomerList = customerService.getAllCustomerListAsPerPagination(page,size,sortBy);
+        return allCustomerList;
+    }
+
     @GetMapping("/nextID") // this is not working
     public long getNextAvailableIdForSignUp() {
         long nextAvailableId = customerService.getNextAvailableId();
