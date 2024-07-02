@@ -4,8 +4,15 @@ import com.ranchiDiary.RanchiDiaryBackend.entity.Customer;
 import com.ranchiDiary.RanchiDiaryBackend.pojo.CustomerRequestBody;
 import com.ranchiDiary.RanchiDiaryBackend.pojo.NotificationPojo;
 import com.ranchiDiary.RanchiDiaryBackend.repository.CustomerRepository;
+import com.ranchiDiary.RanchiDiaryBackend.repository.sortingAndPaginationRepository.ProductRpository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+
 
 import java.util.*;
 
@@ -17,6 +24,9 @@ public class CustomerService {
 
     @Autowired
     private NotificationService notificationService;
+
+    @Autowired
+    private ProductRpository productRpository;
 
 
     public int saveCustomerDataInDatabase(CustomerRequestBody customerRequestBody) {
@@ -39,6 +49,13 @@ public class CustomerService {
     public List<Customer> getAllCustomerList() {
         List<Customer> customersList = customerRepository.findAll();
         return customersList;
+    }
+
+    public List<Customer> getAllCustomerListAsPerPagination(int page, int size, String sortBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        Page<Customer> all = productRpository.findAll(pageable);
+        List<Customer> list = all.stream().toList();
+        return list;
     }
 
 
