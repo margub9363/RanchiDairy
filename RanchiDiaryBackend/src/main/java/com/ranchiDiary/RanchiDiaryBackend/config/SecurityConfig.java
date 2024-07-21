@@ -38,7 +38,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/authenticate", "/register","/h2-console/**","/customer/nextID").permitAll()
+                        .requestMatchers("/authenticate", "/register","/h2-console/**","/customer/nextID","/swagger-ui/**","/v3/api-docs/**","/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session

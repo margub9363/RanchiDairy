@@ -1,0 +1,24 @@
+openapi: 3.0.1
+info:
+  title: Sample API
+  description: Sample API for demonstration
+  version: 1.0.0
+servers:
+  - url: http://localhost:8083
+paths:
+  /hello:
+    get:
+      summary: Returns a greeting message
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+
+    post:
+      summary: testing
+      responses:
+        '201':
+          descritption: success
